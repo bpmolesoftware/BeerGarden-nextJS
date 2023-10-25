@@ -1,0 +1,1 @@
+IMPORTANT : do not declare these variables in an .env.local on production, rather use more secure means like Secrets if you use Vercel.
