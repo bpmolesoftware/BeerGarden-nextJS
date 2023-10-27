@@ -1,0 +1,29 @@
+.info-container{
+  margin-top: 200px;
+  display: flex;
+  .info-list{
+    display: flex;
+    padding: 1rem;
+
+    .info{
+      display: flex;
+      flex-direction: column;
+      
+      align-items: center;
+      text-align: center;
+      width: 29%;
+      float: left;
+      margin-right: 1%;
+      padding: 1%;
+      .icon {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: 55px;
+       }
+
+       &:hover{
+        background-color: rgba(0, 0, 0, 0.5);
+       }
+    }
+  }
+}

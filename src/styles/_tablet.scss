@@ -1,0 +1,25 @@
+.tablet{
+  // position: absolute;
+  width: 650px;height: 445px;
+  background:url("/img/tablet.png");
+  display: block;
+
+  & > div{
+    margin: 45px 0 0 79px;
+    position:relative;
+
+  }
+
+
+  & >  li  , ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:block;
+    width:492px;
+    overflow:hidden;
+  }
+}
+// .tablet div ul, .tablet li{margin:0;padding:0;list-style:none;position:relative;display:block;}
+// .tablet div, .tablet li {width:492px;overflow:hidden;}
+// .tablet div{margin: 45px 0 0 79px;}
