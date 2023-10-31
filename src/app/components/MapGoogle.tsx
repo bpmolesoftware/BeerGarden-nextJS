@@ -8,28 +8,39 @@ const mapStyles = {
   height: '70%',
 };
 
-const features = [
-  {
-    lat: 47.972215,
-    lng: 11.476515,
-    icon: 'img/map_tag_.png',
-  },
-  {
-    lat: 48.163617,
-    lng: 11.535476,
-    icon: 'img/map_tag_.png',
-  },
-];
+function getData(setCoords: any) {
+  fetch(`http://localhost:3000/api/getdata`).then((response) =>
+    response.json().then((data) => {
+      console.log(data.results);
+      populateCoords(data.results, setCoords);
+      // populateAdvice(data.slip.id , data.slip.advice)
+    }),
+  );
+}
+
+function populateCoords(data: any, setCoords: any) {
+  const coords: any[] = [];
+
+  for (let index = 0; index < data.length; index++) {
+    coords.push(data[index].coordinates);
+  }
+
+  setCoords(coords);
+}
 
 const MapGoogle = () => {
-  const [location, setLocation] = useState({
+  const icon = 'img/map_tag_.png';
+
+  const [geoLocation, setGeoLocation] = useState({
     loaded: false,
     coordinates: { lat: 0, lng: 0 },
   });
 
+  const [coords, setCoords] = useState([]);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      setLocation({
+      setGeoLocation({
         loaded: true,
         coordinates: {
           lat: position.coords.latitude,
@@ -37,37 +48,47 @@ const MapGoogle = () => {
         },
       });
     });
+    return () => getData(setCoords);
   }, []);
 
   return (
-    <Map
-      google={window.google}
-      zoom={11}
-      style={mapStyles}
-      initialCenter={{
-        lat: 48.137154,
-        lng: 11.576124,
-      }}
-    >
-      <Marker
-        position={{
-          lat: location.coordinates.lat,
-          lng: location.coordinates.lng,
+    <div className="map-component">
+      <Map
+        google={window.google}
+        zoom={11}
+        style={mapStyles}
+        initialCenter={{
+          lat: 48.137154,
+          lng: 11.576124,
         }}
-      />
+      >
+        <Marker
+          position={{
+            lat: geoLocation.coordinates.lat,
+            lng: geoLocation.coordinates.lng,
+          }}
+        />
 
-      {features.map(function (marker) {
-        return (
-          <Marker
-            position={{
-              lat: marker.lat,
-              lng: marker.lng,
-            }}
-            icon={marker.icon}
-          />
-        );
-      })}
-    </Map>
+        {coords.map(function (marker: any) {
+          const latNLng = marker.split(',');
+
+          const lat = latNLng[0];
+          const lng = latNLng[1];
+
+          console.log(marker);
+
+          return (
+            <Marker
+              position={{
+                lat,
+                lng,
+              }}
+              icon={icon}
+            />
+          );
+        })}
+      </Map>
+    </div>
   );
 };
 
