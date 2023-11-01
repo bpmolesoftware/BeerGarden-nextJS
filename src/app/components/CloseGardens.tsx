@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const gardens = [
@@ -29,6 +30,11 @@ const gardens = [
 ];
 
 const CloseGardens = () => {
+  const router = useRouter();
+
+  function handleOnClick(e: any) {
+    router.push(`http://localhost:3000/${e}`);
+  }
   return (
     <div className="close-gardens">
       {gardens
@@ -37,6 +43,7 @@ const CloseGardens = () => {
           <div
             className="garden"
             style={{ backgroundImage: `url(${garden.img})` }}
+            onClick={() => handleOnClick(garden.id)}
           >
             <div className="name">{garden.name}</div>
             <div className="distance">
