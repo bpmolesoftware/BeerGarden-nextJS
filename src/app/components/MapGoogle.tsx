@@ -1,68 +1,28 @@
 'use client';
 
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
+import { getCoordsAndId, getGeolocation } from '@/utils/apiDataUtil';
+
+import SearchBar from './SearchBar';
 
 const mapStyles = {
   width: '100%',
-  height: '70%',
+  height: '100%',
 };
-
-const features = [
-  {
-    lat: 47.972215,
-    lng: 11.476515,
-    icon: 'img/map_tag_.png',
-  },
-  {
-    lat: 48.163617,
-    lng: 11.535476,
-    icon: 'img/map_tag_.png',
-  },
-];
-
-function getData(setCoords: any) {
-  fetch(`http://localhost:3000/api/getdata`).then((response) =>
-    response.json().then((data) => {
-      console.log(data.results);
-      populateCoords(data.results, setCoords);
-      // populateAdvice(data.slip.id , data.slip.advice)
-    }),
-  );
-}
-
-function populateCoords(data: any, setCoords: any) {
-  const coords: any[] = [];
-
-  for (let index = 0; index < data.length; index++) {
-    coords.push(data[index].coordinates);
-  }
-
-  setCoords(coords);
-}
 
 const MapGoogle = () => {
   const icon = 'img/map_tag_.png';
 
-  const [geoLocation, setGeoLocation] = useState({
-    loaded: false,
-    coordinates: { lat: 0, lng: 0 },
-  });
+  const geoLocation = getGeolocation();
+  const coordsAndId = getCoordsAndId();
 
-  const [coords, setCoords] = useState([]);
+  const router = useRouter();
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setGeoLocation({
-        loaded: true,
-        coordinates: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
-      });
-    });
-    return () => getData(setCoords);
-  }, []);
+  function handleOnClick(e: any) {
+    router.push(`http://localhost:3000/${e}`);
+  }
 
   return (
     <Map
@@ -74,6 +34,7 @@ const MapGoogle = () => {
         lng: 11.576124,
       }}
     >
+      <SearchBar />
       <Marker
         position={{
           lat: geoLocation.coordinates.lat,
@@ -81,11 +42,12 @@ const MapGoogle = () => {
         }}
       />
 
-      {coords.map(function (marker: any) {
+      {coordsAndId.map(function (marker: any) {
         const latNLng = marker.split(',');
 
         const lat = latNLng[0];
         const lng = latNLng[1];
+        const id = latNLng[2];
 
         console.log(marker);
 
@@ -96,6 +58,7 @@ const MapGoogle = () => {
               lng,
             }}
             icon={icon}
+            onClick={() => handleOnClick(id)}
           />
         );
       })}
