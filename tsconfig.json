@@ -54,6 +54,7 @@
     "**/*.tsx",
     ".storybook/*.ts",
     ".next/types/**/*.ts",
-    "src/app/libs/Env.mjs"
+    "src/app/libs/Env.mjs",
+    "src/pages/api/getdata.js"
   ]
 }

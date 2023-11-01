@@ -21,15 +21,39 @@ const features = [
   },
 ];
 
+function getData(setCoords: any) {
+  fetch(`http://localhost:3000/api/getdata`).then((response) =>
+    response.json().then((data) => {
+      console.log(data.results);
+      populateCoords(data.results, setCoords);
+      // populateAdvice(data.slip.id , data.slip.advice)
+    }),
+  );
+}
+
+function populateCoords(data: any, setCoords: any) {
+  const coords: any[] = [];
+
+  for (let index = 0; index < data.length; index++) {
+    coords.push(data[index].coordinates);
+  }
+
+  setCoords(coords);
+}
+
 const MapGoogle = () => {
-  const [location, setLocation] = useState({
+  const icon = 'img/map_tag_.png';
+
+  const [geoLocation, setGeoLocation] = useState({
     loaded: false,
     coordinates: { lat: 0, lng: 0 },
   });
 
+  const [coords, setCoords] = useState([]);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      setLocation({
+      setGeoLocation({
         loaded: true,
         coordinates: {
           lat: position.coords.latitude,
@@ -37,6 +61,7 @@ const MapGoogle = () => {
         },
       });
     });
+    return () => getData(setCoords);
   }, []);
 
   return (
@@ -51,19 +76,26 @@ const MapGoogle = () => {
     >
       <Marker
         position={{
-          lat: location.coordinates.lat,
-          lng: location.coordinates.lng,
+          lat: geoLocation.coordinates.lat,
+          lng: geoLocation.coordinates.lng,
         }}
       />
 
-      {features.map(function (marker) {
+      {coords.map(function (marker: any) {
+        const latNLng = marker.split(',');
+
+        const lat = latNLng[0];
+        const lng = latNLng[1];
+
+        console.log(marker);
+
         return (
           <Marker
             position={{
-              lat: marker.lat,
-              lng: marker.lng,
+              lat,
+              lng,
             }}
-            icon={marker.icon}
+            icon={icon}
           />
         );
       })}
