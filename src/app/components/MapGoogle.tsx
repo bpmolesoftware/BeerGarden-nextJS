@@ -49,8 +49,6 @@ const MapGoogle = () => {
         const lng = latNLng[1];
         const id = latNLng[2];
 
-        console.log(marker);
-
         return (
           <Marker
             position={{
