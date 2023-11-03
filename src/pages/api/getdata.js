@@ -1,12 +1,7 @@
-import mysql from 'mysql2/promise';
+import { createConnectionToDB } from './connectDB';
 
 export default async function handler(req, res) {
-  const dbconnection = mysql.createPool({
-    host: 'localhost',
-    database: 'beergardendatabase',
-    user: 'root',
-    password: 'verysecretbeergardenpass',
-  });
+  const dbconnection = await createConnectionToDB();
 
   try {
     const query =
@@ -14,7 +9,7 @@ export default async function handler(req, res) {
 
     const values = [];
     const [data] = await dbconnection.execute(query, values);
-    // dbconnection.end();
+    dbconnection.end();
     res.status(200).json({ results: data });
   } catch (error) {
     res.status(500).json({ error: error.message });

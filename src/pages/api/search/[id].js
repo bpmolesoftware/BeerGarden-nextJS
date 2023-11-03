@@ -1,17 +1,12 @@
-import mysql from 'mysql2/promise';
+import { createConnectionToDB } from '../connectDB';
 
 export default async function handler(req, res) {
   const { id } = req.query;
 
-  const dbconnection = mysql.createPool({
-    host: 'localhost',
-    database: 'beergardendatabase',
-    user: 'root',
-    password: 'verysecretbeergardenpass',
-  });
+  const dbconnection = await createConnectionToDB();
 
   try {
-    const query = `SELECT title, description, address, openingtimes, kids, beer, tipp FROM beergardens_001 as beer WHERE beer.id like ${id}`;
+    const query = `SELECT title, description, address, openingtimes, kids, beer, tipp, coordinates FROM beergardens_001 as beer WHERE beer.id like ${id}`;
 
     const values = [];
     const [data] = await dbconnection.execute(query, values);

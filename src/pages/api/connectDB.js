@@ -1,14 +1,18 @@
 import mysql from 'mysql2/promise';
 
-export default async function connectToDB(req, res) {
-  const { searchValue } = req.query;
+const host = process.env.HOST;
+const database = process.env.DATABASE;
+const user = process.env.USER;
+const password = process.env.PASSWORD;
 
-  const dbconnection = mysql.createPool({
-    host: 'localhost',
-    database: 'beergardendatabase',
-    user: 'root',
-    password: 'verysecretbeergardenpass',
+const createConnectionToDB = async () => {
+  const connectToDB = await mysql.createConnection({
+    host,
+    database,
+    user,
+    password,
   });
+  return connectToDB;
+};
 
-  return dbconnection;
-}
+export { createConnectionToDB };
