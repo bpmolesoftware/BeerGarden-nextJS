@@ -1,5 +1,6 @@
-import React from 'react';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import React from 'react';
+
 import { getCoordsAndId, getGeolocation } from '@/utils/apiDataUtil';
 
 const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -34,8 +35,8 @@ const DistanceCalculator = ({ google }) => {
       <Map
         google={google}
         initialCenter={{
-          lat: currentLocation.coordinates.lat,
-          lng: currentLocation.coordinates.lng,
+          lat: 48.137154, // Munich's latitude
+          lng: 11.576124, // Munich's longitude
         }}
         zoom={12}
       >
