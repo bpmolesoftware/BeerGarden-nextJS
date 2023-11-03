@@ -8,10 +8,6 @@ const Index = () => {
     <div>
       <CloseGardens />
       <MapGoogle />
-<<<<<<< Updated upstream
-      {/* <DistanceCalculator /> */}
-=======
->>>>>>> Stashed changes
     </div>
   );
 };
