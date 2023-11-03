@@ -56,12 +56,22 @@ const DistanceCalculator = ({ google }) => {
             parseFloat(lat),
             parseFloat(lng),
           );
+
+          const distanceText =
+            distance > 1000
+              ? `${(distance / 1000).toFixed(2)} km`
+              : `${distance.toFixed(2)} m`;
+
           return (
             <Marker
               key={id}
               position={{ lat: parseFloat(lat), lng: parseFloat(lng) }}
               name={`Brewery ${index + 1}`}
-              label={`Distance: ${distance.toFixed(2)} meters`}
+              label={`Distance: ${distanceText}`}
+              icon={{
+                url: '/img/beer-mug.png',
+                scaledSize: new google.maps.Size(49, 66),
+              }}
             />
           );
         })}
