@@ -16,6 +16,7 @@ const getCoordsAndId = () => {
     setCoords(coords);
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     fetch(`http://localhost:3000/api/getdata`).then((response) =>
       response.json().then((data) => {
@@ -53,9 +54,22 @@ const getIdByUrl = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [id, setId] = useState('');
 
-  setId(window.location.href);
+  useEffect(() => {
+    setId(window.location.href);
+  }, []);
 
-  return id;
+  const url = id.split('/');
+
+  return url[url.length - 1];
 };
 
-export { getCoordsAndId, getGeolocation, getIdByUrl };
+const getDataById = async (id: any) => {
+  const res = await fetch(`http://localhost:3000/api/search/${id}`);
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+};
+
+export { getCoordsAndId, getDataById, getGeolocation, getIdByUrl };

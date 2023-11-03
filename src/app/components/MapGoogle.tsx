@@ -20,8 +20,11 @@ const MapGoogle = () => {
 
   const router = useRouter();
 
-  function handleOnClick(e: any) {
-    router.push(`http://localhost:3000/${e}`);
+  function handleOnClick(id: any) {
+    router.push({
+      pathname: `http://localhost:3000/${id}`,
+      query: { id },
+    });
   }
 
   return (
@@ -50,6 +53,8 @@ const MapGoogle = () => {
         const id = latNLng[2];
 
         return (
+          // eslint-disable-next-line react/jsx-key
+
           <Marker
             position={{
               lat,
