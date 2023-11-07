@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { getDataBySearch } from '@/utils/apiDataUtil';
+
 const SearchBar = () => {
   const [value, setValue] = useState('');
 
@@ -11,10 +13,15 @@ const SearchBar = () => {
     setValue('');
   }
 
-  function handleSearch(e: any): void {
+  const handleSearch = async (e: any): Promise<void> => {
     e.preventDefault();
+
+    if (/.{3}/.test(value)) {
+      const data = await getDataBySearch(value);
+    }
+
     setValue('');
-  }
+  };
 
   return (
     <div className="search">
