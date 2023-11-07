@@ -12,23 +12,23 @@ const Header = () => {
     <div className="header">
       <div className="header__back" onClick={() => handleBack()}>
         <img className="image" src="/img/back-arrow.svg" alt="back" />
-        <p className="title">Back </p>
+        <p className="header__title">Back </p>
       </div>
       <div className="header__home">
         <img className="image" src="/img/home.svg" alt="back" />
-        <p className="title">Home </p>
+        <p className="header__title">Home </p>
       </div>
       <div className="header__favourites">
         <img className="image" src="/img/fav.svg" alt="back" />
-        <p className="title">Add to favourites</p>
+        <p className="header__title">Add to favourites</p>
       </div>
       <div className="header__gallery">
         <img className="image" src="/img/gallery.svg" alt="back" />
-        <p className="title">Gallery</p>
+        <p className="header__title">Gallery</p>
       </div>
       <div className="header__gallery">
         <img className="image" src="/img/menu.svg" alt="back" />
-        <p className="title">Menu</p>
+        <p className="header__title">Menu</p>
       </div>
     </div>
   );

@@ -4,9 +4,19 @@
 @import "search";
 @import "close-gardens";
 @import "header";
+@import "detail-page";
 
 body{
-  background-image: url("/img/background.jpg");
+  background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        /* bottom, image */
+        url("/img/details-background");
+  // background-image: url("/img/details-background");
+  width: 100%;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -50,4 +60,23 @@ h1,h1 a {
 
 .mastah{
   height: 1470px;
+}
+
+.title{
+  color: #FFF;
+  font-family: Source Sans Pro;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.info{
+  color: #FFF;
+  font-family: Source Sans Pro;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 2rem;
 }

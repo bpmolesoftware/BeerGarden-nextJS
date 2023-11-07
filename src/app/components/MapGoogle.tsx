@@ -13,7 +13,7 @@ const mapStyles = {
 };
 
 const MapGoogle = () => {
-  const icon = 'img/map_tag_.png';
+  const icon = 'img/beer-marker.svg';
 
   const geoLocation = getGeolocation();
   const coordsAndId = getCoordsAndId();
@@ -48,6 +48,7 @@ const MapGoogle = () => {
       {coordsAndId.map(function (marker: any) {
         const latNLng = marker.split(',');
 
+        console.log(latNLng);
         const lat = latNLng[0];
         const lng = latNLng[1];
         const id = latNLng[2];
