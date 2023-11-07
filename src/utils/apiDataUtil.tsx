@@ -10,7 +10,9 @@ const getCoordsAndId = () => {
 
     // eslint-disable-next-line no-plusplus
     for (let index = 0; index < data.length; index++) {
-      coords.push(`${data[index].coordinates},${data[index].id}`);
+      coords.push(
+        `${data[index].coordinates},${data[index].id},${data[index].title}`,
+      );
     }
 
     setCoords(coords);

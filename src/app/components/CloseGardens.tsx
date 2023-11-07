@@ -1,58 +1,45 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-const gardens = [
-  {
-    name: 'Lorem, ipsum.',
-    distance: 180,
-    img: '/img/close-bgarden-back.svg',
-  },
-  {
-    name: 'Lorem, ipsum.',
-    distance: 2320,
-    img: '/img/close-bgarden-back.svg',
-  },
-  {
-    name: 'Lorem, ipsum.',
-    distance: 1320,
-    img: '/img/close-bgarden-back.svg',
-  },
-  {
-    name: 'Lorem, ipsum.',
-    distance: 420,
-    img: '/img/close-bgarden-back.svg',
-  },
-  {
-    name: 'Lorem, ipsum.',
-    distance: 220,
-    img: '/img/close-bgarden-back.svg',
-  },
-];
+import { calculateDistance } from '../../utils/DistanceCalculator';
 
 const CloseGardens = () => {
   const router = useRouter();
+
+  const data = calculateDistance();
+  console.log(data);
+
+  // const distanceText =
+  // distance > 1000
+  //   ? `${(distance / 1000).toFixed(2)} km`
+  //   : `${distance.toFixed(2)} m`;
+
+  const icon = '/img/close-bgarden-back.svg';
 
   function handleOnClick(e: any) {
     router.push(`http://localhost:3000/${e}`);
   }
   return (
     <div className="close-gardens">
-      {gardens
+      {data
+        .slice(0, 4)
         .sort((a, b) => a.distance - b.distance)
-        .map((garden) => (
+        .map((data) => (
           <div
             className="garden"
-            style={{ backgroundImage: `url(${garden.img})` }}
-            onClick={() => handleOnClick(garden.id)}
+            style={{ backgroundImage: `url(${icon})` }}
+            onClick={() => handleOnClick(data.id)}
           >
-            <div className="name">{garden.name}</div>
+            <div className="name">{data.title}</div>
             <div className="distance">
               <img
                 className="distance-icon"
                 src="img/small-location.svg"
                 alt=""
               />
-              {garden.distance} m{' '}
+              {data.distance > 1000
+                ? `${(data.distance / 1000).toFixed(2)} km`
+                : `${data.distance.toFixed(2)} m`}
             </div>
           </div>
         ))}
