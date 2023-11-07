@@ -1,13 +1,15 @@
 import '@/styles/global.scss';
 
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 import Address from '@/app/components/Address';
+import CommentForm from '@/app/components/CommentForm';
 import GardenDetails from '@/app/components/GardenDetails';
 import Header from '@/app/components/Header';
 import MapGarden from '@/app/components/MapGarden';
 import OpenTimes from '@/app/components/OpenTimes';
+import ShowComments from '@/app/components/ShowComments';
+import Weather from '@/app/components/Weather';
 
 const data = {
   id: 1,
@@ -54,27 +56,18 @@ const Index = () => {
   //   );
   // }, [props.id]);
 
-  useEffect(() => {
-    fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=48.1374&longitude=11.5755&hourly=temperature_2m`,
-    ).then((response) =>
-      response.json().then((data) => {
-        // eslint-disable-next-line array-callback-return
-        console.log(data);
-      }),
-    );
-  }, []);
-
   return (
-    <div>
+    <div className="page-details">
       <Header />
-      <div className="page-details">
+      <div className="details-container">
         <MapGarden coords={data.coordinates} />
         <GardenDetails title={data.title} description={data.description} />
         <OpenTimes openingtimes={data.openingtimes} />
         <Address address={data.address} />
-        {/* <Weather /> */}
       </div>
+      <Weather />
+      <CommentForm />
+      <ShowComments />
     </div>
   );
 };

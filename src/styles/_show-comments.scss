@@ -1,0 +1,24 @@
+.comments{
+  margin: 4rem;
+  background-color: rgba(0, 0, 0, 0.74);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+  
+  .comment{
+    width: 75%;
+    background-color: rgba(0, 0, 0, 0.26);
+
+    &__name-and-time{
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      gap: 1rem;
+
+      .name , .time {
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,29 @@
+.comment-form{
+
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  align-items: center;
+  gap: 1rem;
+
+  &__name{
+    color: #000;
+    font-size: 18px;
+    width: 75%;
+    padding: .4rem;
+  }
+
+  label{
+    color: #FFF;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  &__comment{
+    color: #000;
+    font-size: 18px;
+    width: 75%;
+    padding: .4rem;
+    height: 200px;
+  }
+}

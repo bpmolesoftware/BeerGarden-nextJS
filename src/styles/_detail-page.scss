@@ -1,11 +1,17 @@
 .page-details{
-  padding: 3rem;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 163.04%);
-  background-image: url("/img/details-background.svg");
+  background-color: rgba(0, 0, 0, 0.438);
+  > * {
+    z-index: 2;
+  }
+}
 
+.details-container{
+  padding: 3rem;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  
   .opentimes , .address {
     display: flex;
     gap:1rem;
@@ -16,7 +22,7 @@
   .details{
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: fit-content;
     justify-content: center;
     gap: 1rem;
     margin-left: 2rem;

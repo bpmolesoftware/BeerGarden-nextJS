@@ -24,7 +24,7 @@ const Header = () => {
       </div>
       <div className="header__gallery">
         <img className="image" src="/img/gallery.svg" alt="back" />
-        <p className="header__title">Gallery</p>
+        <p className="header__title">Favourites</p>
       </div>
       <div className="header__gallery">
         <img className="image" src="/img/menu.svg" alt="back" />

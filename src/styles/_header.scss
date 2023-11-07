@@ -4,7 +4,9 @@
   background-color: rgba(0, 0, 0, 0.568);
   margin-top: .5rem;
   padding: .5rem;
-  
+  & > * {
+    z-index: 2;
+  }
   
   &>div{
     margin-left: 4rem;

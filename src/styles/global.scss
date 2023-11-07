@@ -4,30 +4,40 @@
 @import "search";
 @import "close-gardens";
 @import "header";
+@import "show-comments";
 @import "detail-page";
+@import "weather";
+@import "comment-form";
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap');
 
 body{
-  background:
-        /* top, transparent black, faked with gradient */ 
-        linear-gradient(
-          rgba(0, 0, 0, 0.7), 
-          rgba(0, 0, 0, 0.7)
-        ),
-        /* bottom, image */
-        url("/img/details-background");
-  // background-image: url("/img/details-background");
+
+  // font-family: Source Sans Pro;
+  background-image: url("/img/details-background.svg");
+  font-family: Source Sans Pro;
+
   width: 100%;
+  height: 100hv;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   background-position: center -69px;
   background-color: #000;
-  font-family: Arial, Helvetica sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 14px;
   font-weight: 800;
   color: #fff;
   line-height: 22px;
-  
+
+  // &::before{
+  //   inset: 0;
+  //   position: absolute;
+  //   content: "";
+  //   width: 100%;
+  //   background: #00000070;
+  //   z-index: 1;
+  // }
+   
 }
 
 .container{
