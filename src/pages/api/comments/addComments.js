@@ -1,12 +1,10 @@
 import { createConnectionToDB } from '../connectDB';
 
-export default async function handler(req, res) {
-  const { searchValue } = req.query;
-
+const myfunc = async (req, res) => {
   const dbconnection = await createConnectionToDB();
-
   try {
-    const query = 'SELECT name, commentText from comments';
+    const { name, id, comment } = JSON.parse(JSON.stringify(req.body));
+    const query = `INSERT INTO Comments (name, commentText, beergardenId) values ("${name}", "${comment}", ${id})`;
 
     const values = [];
     const [data] = await dbconnection.execute(query, values);
@@ -15,4 +13,6 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
+
+export default myfunc;

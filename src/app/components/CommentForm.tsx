@@ -19,11 +19,11 @@ const CommentForm = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
 
-    const data = { content: [name, comment, id] };
+    const data = { name, comment, id };
 
     console.log(data);
 
-    axios.post('/api/comment', data);
+    axios.post('/api/comments/addComments', data);
   }
 
   return (
