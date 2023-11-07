@@ -16,7 +16,7 @@ const SearchBar = () => {
   const handleSearch = async (e: any): Promise<void> => {
     e.preventDefault();
 
-    if (/.{3}/.test(value)) {
+    if (/.{4,}/.test(value)) {
       const data = await getDataBySearch(value);
     }
 
