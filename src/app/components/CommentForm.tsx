@@ -1,13 +1,9 @@
 import axios from 'axios';
-import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
 
-const CommentForm = () => {
+const CommentForm = ({ id }: any) => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
-
-  const params = useParams();
-  const { id }: any = params;
 
   function handleName(e: any) {
     setName(e);
@@ -20,8 +16,6 @@ const CommentForm = () => {
     e.preventDefault();
 
     const data = { name, comment, id };
-
-    console.log(data);
 
     axios.post('/api/comments/addComments', data);
   }

@@ -48,7 +48,6 @@ const MapGoogle = () => {
       {coordsAndId.map(function (marker: any) {
         const latNLng = marker.split(',');
 
-        console.log(latNLng);
         const lat = latNLng[0];
         const lng = latNLng[1];
         const id = latNLng[2];
