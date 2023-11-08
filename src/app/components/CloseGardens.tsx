@@ -43,7 +43,7 @@ const CloseGardens = () => {
               />
               {data.distance > 1000
                 ? `${(data.distance / 1000).toFixed(2)} km`
-                : `${data.distance.toFixed(2)} m`}
+                : `${data.distance.toFixed()} m`}
             </div>
           </div>
         ))}
