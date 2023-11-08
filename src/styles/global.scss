@@ -28,15 +28,6 @@ body{
   font-weight: 800;
   color: #fff;
   line-height: 22px;
-
-  // &::before{
-  //   inset: 0;
-  //   position: absolute;
-  //   content: "";
-  //   width: 100%;
-  //   background: #00000070;
-  //   z-index: 1;
-  // }
    
 }
 
@@ -89,4 +80,11 @@ h1,h1 a {
   font-weight: 700;
   line-height: normal;
   margin-top: 2rem;
+}
+
+.home{
+
+  &__image{
+    width: 100%;
+  }
 }

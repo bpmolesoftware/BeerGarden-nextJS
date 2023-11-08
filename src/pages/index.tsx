@@ -1,13 +1,22 @@
 import '@/styles/global.scss';
 
-import CloseGardens from '@/app/components/CloseGardens';
-import MapGoogle from '@/app/components/MapGoogle';
+import { useRouter } from 'next/router';
 
 const Index = () => {
+  const router = useRouter();
+
+  function redirectToMap() {
+    router.push(`/beergarden-map`);
+  }
+
   return (
-    <div>
-      <CloseGardens />
-      <MapGoogle />
+    <div className="home">
+      <img
+        className="home__image"
+        src="/img/home-background.svg"
+        alt=""
+        onClick={() => redirectToMap()}
+      />
     </div>
   );
 };

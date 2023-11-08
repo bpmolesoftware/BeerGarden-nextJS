@@ -5,7 +5,11 @@ const Header = () => {
   const router = useRouter();
 
   function handleBack() {
-    router.push(`http://localhost:3000/`);
+    router.push(`/`);
+  }
+
+  function goToFavaurites(): void {
+    router.push(`/favourites`);
   }
 
   return (
@@ -22,7 +26,7 @@ const Header = () => {
         <img className="image" src="/img/fav.svg" alt="back" />
         <p className="header__title">Add to favourites</p>
       </div>
-      <div className="header__gallery">
+      <div className="header__gallery" onClick={() => goToFavaurites()}>
         <img className="image" src="/img/gallery.svg" alt="back" />
         <p className="header__title">Favourites</p>
       </div>
