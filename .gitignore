@@ -52,3 +52,15 @@ local
 
 # vercel
 .vercel
+.env
+.idea/BeerGarden-nextJS.iml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+package-lock.json
+package.json
+src/app/components/MapGoogle.tsx
+src/pages/index.tsx
