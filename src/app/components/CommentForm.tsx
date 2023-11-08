@@ -18,6 +18,8 @@ const CommentForm = ({ id }: any) => {
     const data = { name, comment, id };
 
     axios.post('/api/comments/addComments', data);
+    setName('');
+    setComment('');
   }
 
   return (
@@ -29,6 +31,7 @@ const CommentForm = ({ id }: any) => {
         <input
           type="text"
           id="name"
+          value={name}
           className="comment-form__name"
           placeholder="Insert your name here..."
           onChange={(e) => handleName(e.currentTarget.value)}
@@ -39,6 +42,7 @@ const CommentForm = ({ id }: any) => {
         <textarea
           id="comment"
           name="comment"
+          value={comment}
           className="comment-form__comment"
           placeholder="Insert your name here..."
           onChange={(e) => handleComment(e.currentTarget.value)}

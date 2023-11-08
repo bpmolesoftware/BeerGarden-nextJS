@@ -70,4 +70,19 @@ const getDataBySearch = async (title: any) => {
   }
 };
 
-export { getCoordsAndId, getDataById, getDataBySearch, getGeolocation };
+const getComments = async (comment: any) => {
+  const res = await fetch(`http://localhost:3000/api/comments/${comment}`);
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+};
+
+export {
+  getComments,
+  getCoordsAndId,
+  getDataById,
+  getDataBySearch,
+  getGeolocation,
+};

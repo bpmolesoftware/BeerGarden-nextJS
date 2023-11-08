@@ -1,43 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const comments = [
-  {
-    name: 'john doe',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, quae.',
-    time: '2012-01-31 23:59:59',
-  },
-  {
-    name: 'john doe',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, quae.',
-    time: '2012-01-31 23:59:59',
-  },
-  {
-    name: 'john doe',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, quae.',
-    time: '2012-01-31 23:59:59',
-  },
-  {
-    name: 'john doe',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, quae.',
-    time: '2012-01-31 23:59:59',
-  },
-];
+import { getComments } from '@/utils/apiDataUtil';
 
-const ShowComments = () => {
+const ShowComments = ({ id }: any) => {
+  const [comments, setComments] = useState([]);
+
+  const getCommentFromDbs = async (comment: string): Promise<void> => {
+    const result: any = await getComments(comment);
+    setComments(result?.results);
+  };
+
+  useEffect(() => {
+    getCommentFromDbs(id);
+  }, [comments]);
+
   return (
     <div className="comments">
-      {comments.map((comment) => {
+      {comments?.map((comment) => {
         return (
           <>
             <div className="comment__name-and-time">
-              <div className="name">{comment.name}</div>
-              <div className="time">{comment.time}</div>
+              <div className="name">{comment?.name}</div>
+              {/* <div className="time">{comment.time}</div> */}
             </div>
-            <div className="comment__text">{comment.text}</div>
+            <div className="comment__text">{comment?.commentText}</div>
           </>
         );
       })}
-      ;
     </div>
   );
 };

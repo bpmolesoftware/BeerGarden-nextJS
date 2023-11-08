@@ -31,9 +31,9 @@ const Index = () => {
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/search/${props.id}`).then((response) =>
-      response.json().then((data) => {
+      response.json().then((data: any) => {
         // eslint-disable-next-line array-callback-return
-        data.results.map((e: any) => {
+        data.results?.map((e: any) => {
           setTitle(e.title);
           setOpenTimes(e.openTimes);
           setAddress(e.address);
@@ -55,7 +55,7 @@ const Index = () => {
       </div>
       <Weather />
       <CommentForm id={props.id} />
-      <ShowComments />
+      <ShowComments id={props.id} />
     </div>
   );
 };

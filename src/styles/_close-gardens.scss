@@ -6,17 +6,24 @@
   background-color: rgb(124, 124, 124);
   opacity: 0.9;
   width: 20%;
-  height: 100vh;
+  height:100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 
+  
+  //const icon = '/img/close-bgarden-back.svg';
+  
   .garden{
+    background-image: url("/img/close-bgarden-back.svg");
+   
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items:flex-end;
     padding: 0.4rem;
+    background-size: cover;
+
 
     &:hover{
       opacity:0.85;
@@ -24,6 +31,7 @@
   }
 
   .distance , .name{
+    text-shadow: 2px 2px black;
     height: 24px;
     display: flex;
     gap: .4rem;
@@ -33,5 +41,21 @@
 
   .distance-icon{
     height: 20px;
+  }
+
+  &__button{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+   &--prev{
+    top: 0;
+   }
+
+   &--next{
+    bottom: 0;
+   }
   }
 }

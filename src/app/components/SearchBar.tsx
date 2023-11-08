@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import { getDataBySearch } from '@/utils/apiDataUtil';
@@ -5,22 +7,36 @@ import { getDataBySearch } from '@/utils/apiDataUtil';
 const SearchBar = () => {
   const [value, setValue] = useState('');
 
-  function handleInput(value: string): void {
+  const [data, setData] = useState([]);
+
+  const router = useRouter();
+
+  const handleInput = async (value: string): Promise<void> => {
+    if (/.{4,}/.test(value)) {
+      const result = await getDataBySearch(value);
+      setData(result.results);
+    } else {
+      setData([]);
+    }
     setValue(value);
-  }
+  };
   function handleClear(e: any): void {
     e.preventDefault();
+    setData([]);
     setValue('');
   }
 
-  const handleSearch = async (e: any): Promise<void> => {
+  const handleSearch = (e: any) => {
     e.preventDefault();
-
-    if (/.{4,}/.test(value)) {
-      const data = await getDataBySearch(value);
-    }
-
     setValue('');
+  };
+
+  const handleClickOnDropDown = (e: any) => {
+    const { id } = e;
+    router.push({
+      pathname: `http://localhost:3000/${id}`,
+      query: { id },
+    });
   };
 
   return (
@@ -41,17 +57,33 @@ const SearchBar = () => {
           >
             <img src="img/search.svg" className="search__icon" alt="" />
           </button>
-          <button
-            type="clear"
-            className="clear-button"
-            onClick={(e) => handleClear(e)}
-          >
+          // eslint-disable-next-line react/button-has-type
+          <button className="clear-button" onClick={(e) => handleClear(e)}>
             <div>
               <img src="img/x.svg" alt="" />
             </div>
           </button>
         </div>
       </form>
+      {data.length != 0 ? (
+        <ul className="search__dropdown">
+          {data.map((element) => {
+            return (
+              <li
+                key={element.id}
+                className="search__dropdown--element"
+                onClick={() => handleClickOnDropDown(element)}
+              >
+                {element.title}
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        ''
+      )}
+
+      <div />
     </div>
   );
 };
