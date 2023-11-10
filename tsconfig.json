@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -37,12 +33,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/public/*": [
-        "./public/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"]
     },
     "plugins": [
       {
@@ -50,11 +42,7 @@
       }
     ]
   },
-  "exclude": [
-    "./out/**/*",
-    "./node_modules/**/*",
-    "cypress/**/*.ts"
-  ],
+  "exclude": ["./out/**/*", "./node_modules/**/*", "cypress/**/*.ts"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -63,6 +51,7 @@
     ".next/types/**/*.ts",
     "src/app/libs/Env.mjs",
     "src/pages/api/getdata.js",
-    "src/utils/connectDB.js"
+    "src/utils/connectDB.js",
+    "src/styles/js/mapStyles.ts"
   ]
 }
