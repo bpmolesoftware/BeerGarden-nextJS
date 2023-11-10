@@ -3,9 +3,12 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
 
   @include breakpoint-down(sm) {
     margin-top: 2rem;
+    display: none;
   }
 
   &__title{

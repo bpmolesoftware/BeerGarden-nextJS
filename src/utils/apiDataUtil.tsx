@@ -78,6 +78,16 @@ const getComments = async (comment: any) => {
     return data;
   }
 };
+const getWeather = async () => {
+  const res = await fetch(
+    `https://api.open-meteo.com/v1/forecast?latitude=48.1374&longitude=11.5755&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max`,
+  );
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  }
+};
 
 export {
   getComments,
@@ -85,4 +95,5 @@ export {
   getDataById,
   getDataBySearch,
   getGeolocation,
+  getWeather,
 };

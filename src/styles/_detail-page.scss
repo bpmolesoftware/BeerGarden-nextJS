@@ -1,5 +1,5 @@
 .page-details{
-  background-color: rgba(0, 0, 0, 0.438);
+  background-image: url("/img/beergarden-detail-bg.svg");
   > * {
     z-index: 2;
   }
@@ -15,15 +15,20 @@
   grid-template-columns: 1fr 1fr;
   // position: relative;
 
-  .map{
-    
-  }
+  
 
   @include breakpoint-down(sm) {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+  > :first-child{
+    display: none;
   }
+    text-wrap: wrap;
+    overflow: hidden;
+    padding: 3rem;
+
+  }
+  
   
   .opentimes , .address {
     display: flex;
@@ -39,7 +44,6 @@
     justify-content: center;
     gap: 1rem;
     margin-left: 2rem;
-   
   }
 
 }

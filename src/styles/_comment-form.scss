@@ -11,6 +11,12 @@
     width: 45%;
     padding: .7rem;
     border-radius: 8px;
+
+    @include breakpoint-down(sm) {
+      width: 100%;
+      text-wrap: wrap;
+      overflow: hidden;
+    }
   }
 
   label{
@@ -32,6 +38,9 @@
     padding: .7rem;
     height: 200px;
     border-radius: 8px;
+    @include breakpoint-down(sm) {
+      width: 100%;
+    }
   }
 
   .send-comment{
@@ -46,5 +55,6 @@
     letter-spacing: 3px;
     width: fit-content;
     font-size: 16px;
+    overflow: hidden;
   }
 }

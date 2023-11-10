@@ -1,9 +1,4 @@
-.map-component{
-  & > * {
-    z-index: 1;
-  }
-}
-
-.marker{
-  
+.map-wrapper{
+  z-index: 3;
+  height: 300px;
 }

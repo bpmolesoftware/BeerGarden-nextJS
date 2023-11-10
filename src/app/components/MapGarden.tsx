@@ -2,6 +2,8 @@
 
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
+import mapStyles from '@/styles/js/mapStyles';
+
 const containerStyles = {
   width: '45%',
   height: '40%',
@@ -20,6 +22,7 @@ const MapGarden = ({ coords }: any) => {
   return (
     <Map
       containerStyle={containerStyles}
+      styles={mapStyles.light}
       google={window.google}
       zoom={14}
       center={{

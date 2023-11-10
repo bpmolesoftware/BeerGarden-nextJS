@@ -4,6 +4,15 @@
   background-color: rgba(0, 0, 0, 0.568);
   margin-top: .5rem;
   padding: .5rem;
+
+  
+  &-mobile{
+
+    display: none;
+  }
+
+  @include breakpoint-down(sm) {
+  }
   & > * {
     z-index: 2;
   }
@@ -25,4 +34,7 @@
       height: 36px;
     }
   }
+
+  
 }
+

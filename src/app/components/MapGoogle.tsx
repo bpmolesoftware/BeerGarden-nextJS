@@ -3,6 +3,7 @@
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import { useRouter } from 'next/router';
 
+import mapStyles from '@/styles/js/mapStyles';
 import { getCoordsAndId, getGeolocation } from '@/utils/apiDataUtil';
 
 import SearchBar from './SearchBar';
@@ -11,7 +12,6 @@ const mapStyles = {
   width: '100%',
   height: '100%',
 };
-
 const MapGoogle = () => {
   const icon = 'img/beer-marker.svg';
 
