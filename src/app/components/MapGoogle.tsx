@@ -20,10 +20,10 @@ const MapGoogle = () => {
 
   const router = useRouter();
 
-  function handleOnClick(id: any) {
+  function handleOnClick(id: any, title: any) {
     router.push({
       pathname: `http://localhost:3000/${id}`,
-      query: { id },
+      query: { id, title },
     });
   }
 
@@ -51,6 +51,7 @@ const MapGoogle = () => {
         const lat = latNLng[0];
         const lng = latNLng[1];
         const id = latNLng[2];
+        const title = latNLng[3];
 
         return (
           // eslint-disable-next-line react/jsx-key
@@ -61,7 +62,7 @@ const MapGoogle = () => {
               lng,
             }}
             icon={icon}
-            onClick={() => handleOnClick(id)}
+            onClick={() => handleOnClick(id, title)}
           />
         );
       })}

@@ -46,7 +46,7 @@ const Index = () => {
 
   return (
     <div className="page-details">
-      <Header />
+      <Header id={props.id} title={title} />
       <div className="details-container">
         <MapGarden coords={coords} />
         <GardenDetails title={title} description={description} />

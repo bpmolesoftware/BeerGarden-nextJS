@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-const Header = () => {
+const favoriteData: any = [];
+
+const Header = ({ id, title }: any) => {
   const router = useRouter();
 
   function handleBack() {
@@ -16,6 +18,13 @@ const Header = () => {
     router.push(`/favourites`);
   }
 
+  function addToFavorites() {
+    favoriteData.push({ id: `${id}`, title: `${title}` });
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('favorite', JSON.stringify(favoriteData));
+    }
+  }
+
   return (
     <div className="header">
       <div className="header__back" onClick={() => handleBack()}>
@@ -26,7 +35,7 @@ const Header = () => {
         <img className="image" src="/img/home.svg" alt="back" />
         <p className="header__title">Home </p>
       </div>
-      <div className="header__favourites" onClick={() => getBeergardenFromDb()}>
+      <div className="header__favourites" onClick={() => addToFavorites()}>
         <img className="image" src="/img/fav.svg" alt="back" />
         <p className="header__title">Add to favourites</p>
       </div>
