@@ -1,22 +1,44 @@
-.comments{
+.show-comments{
   margin: 4rem;
-  background-color: rgba(0, 0, 0, 0.74);
   align-items: center;
   display: flex;
   flex-direction: column;
-  
+  gap: 1rem;
+  align-items: flex-start;
   
   .comment{
     width: 75%;
-    background-color: rgba(0, 0, 0, 0.26);
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.651);
+    border-radius: 8px;
 
     &__name-and-time{
+      padding: 1rem;
       display: flex;
       flex-direction: row;
       width: auto;
       gap: 1rem;
+      color: #8b8b8b;
+      font-size: 16px;
+      font-style: italic;
 
-      .name , .time {
+      .name {
+        color: #FFF;
+      }
+    }
+
+    &__text{
+      display: flex;
+      align-items: center;
+      padding-left: 26px;
+      padding-bottom: 16px;
+      min-height: 20px;
+      margin-top: 10px;
+      gap: 1rem;
+      font-size: 18px;
+      img {
+        height: 20px;
       }
     }
   }

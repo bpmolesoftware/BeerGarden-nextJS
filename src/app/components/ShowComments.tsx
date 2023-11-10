@@ -15,7 +15,7 @@ const ShowComments = ({ id }: any) => {
   }, [comments]);
 
   return (
-    <div className="comments">
+    <div className="show-comments">
       {comments?.map((comment) => {
         return (
           <div className="comment">
