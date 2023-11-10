@@ -11,7 +11,9 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  
+  @include breakpoint-down(sm) {
+    display: none;
+  }
   //const icon = '/img/close-bgarden-back.svg';
   
   .garden{

@@ -3,27 +3,46 @@
   display: flex;
   flex-direction: column;
   padding: 4rem;
-  align-items: center;
   gap: 1rem;
 
   &__name{
     color: #000;
     font-size: 18px;
-    width: 75%;
-    padding: .4rem;
+    width: 45%;
+    padding: .7rem;
   }
 
   label{
-    color: #FFF;
-    font-size: 22px;
-    font-weight: bold;
+    color: #8b8b8b;
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  ::placeholder{
+    color: #8b8b8b;
+    font-size: 13px;
+    font-style: italic;
   }
 
   &__comment{
     color: #000;
     font-size: 18px;
     width: 75%;
-    padding: .4rem;
+    padding: .7rem;
     height: 200px;
+  }
+
+  .send-comment{
+    height: 32px;
+    padding: 0 6px 0 6px;
+    margin: 8px 8px 8px 0;
+    background-color: #313b31;
+    color: #8e8175;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: fit-content;
+    font-size: 16px;
   }
 }

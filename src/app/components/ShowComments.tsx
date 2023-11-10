@@ -18,13 +18,16 @@ const ShowComments = ({ id }: any) => {
     <div className="comments">
       {comments?.map((comment) => {
         return (
-          <>
+          <div className="comment">
             <div className="comment__name-and-time">
               <div className="name">{comment?.name}</div>
-              {/* <div className="time">{comment.time}</div> */}
+              <div className="time">9.11.2023 08:41:02</div>
             </div>
-            <div className="comment__text">{comment?.commentText}</div>
-          </>
+            <div className="comment__text">
+              <img src="/img/comment.svg" alt="" />
+              {comment?.commentText}
+            </div>
+          </div>
         );
       })}
     </div>

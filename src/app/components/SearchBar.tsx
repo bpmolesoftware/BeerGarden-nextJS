@@ -57,7 +57,6 @@ const SearchBar = () => {
           >
             <img src="img/search.svg" className="search__icon" alt="" />
           </button>
-          // eslint-disable-next-line react/button-has-type
           <button className="clear-button" onClick={(e) => handleClear(e)}>
             <div>
               <img src="img/x.svg" alt="" />

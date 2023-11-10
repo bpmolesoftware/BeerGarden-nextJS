@@ -5,6 +5,10 @@ const Header = () => {
   const router = useRouter();
 
   function handleBack() {
+    router.back();
+  }
+
+  function handleHome(): void {
     router.push(`/`);
   }
 
@@ -18,11 +22,11 @@ const Header = () => {
         <img className="image" src="/img/back-arrow.svg" alt="back" />
         <p className="header__title">Back </p>
       </div>
-      <div className="header__home">
+      <div className="header__home" onClick={() => handleHome()}>
         <img className="image" src="/img/home.svg" alt="back" />
         <p className="header__title">Home </p>
       </div>
-      <div className="header__favourites">
+      <div className="header__favourites" onClick={() => getBeergardenFromDb()}>
         <img className="image" src="/img/fav.svg" alt="back" />
         <p className="header__title">Add to favourites</p>
       </div>

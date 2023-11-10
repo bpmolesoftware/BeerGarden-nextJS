@@ -9,16 +9,7 @@ const Index = () => {
     router.push(`/beergarden-map`);
   }
 
-  return (
-    <div className="home">
-      <img
-        className="home__image"
-        src="/img/home-background.svg"
-        alt=""
-        onClick={() => redirectToMap()}
-      />
-    </div>
-  );
+  return <div className="home" onClick={() => redirectToMap()} />;
 };
 
 export default Index;

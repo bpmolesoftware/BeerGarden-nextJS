@@ -3,6 +3,9 @@
   > * {
     z-index: 2;
   }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .details-container{
@@ -10,7 +13,17 @@
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  position: relative;
+  // position: relative;
+
+  .map{
+    
+  }
+
+  @include breakpoint-down(sm) {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
   
   .opentimes , .address {
     display: flex;
