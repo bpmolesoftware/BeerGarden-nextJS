@@ -6,10 +6,10 @@
   overflow: hidden;
 
 
-  @include breakpoint-down(sm) {
-    margin-top: 2rem;
-    display: none;
-  }
+  
+
+   
+ 
 
   &__title{
     display: flex;
@@ -60,7 +60,22 @@
     }
   }
 
-  &__next-five-days{
+  &__next-five-days {
+
+    &.mobile{
+      display: none;
+  
+      @include breakpoint-down(sm) {
+        display: flex;
+    
+      }
+    }
+
+    @include breakpoint-down(sm) {
+      display: none;
+    }
+
+    justify-content: space-between;
     padding-left: 4.5rem;
     padding-right: 4.5rem;
     font-size: 32px;
