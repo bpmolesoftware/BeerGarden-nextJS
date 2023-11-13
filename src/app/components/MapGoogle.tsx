@@ -8,7 +8,7 @@ import { getCoordsAndId, getGeolocation } from '@/utils/apiDataUtil';
 
 import SearchBar from './SearchBar';
 
-const mapStyles = {
+const style = {
   width: '100%',
   height: '100%',
 };
@@ -31,7 +31,8 @@ const MapGoogle = () => {
     <Map
       google={window.google}
       zoom={11}
-      style={mapStyles}
+      style={style}
+      styles={mapStyles.light}
       initialCenter={{
         lat: 48.137154,
         lng: 11.576124,
