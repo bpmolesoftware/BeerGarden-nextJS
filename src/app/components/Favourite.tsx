@@ -1,13 +1,22 @@
 import React from 'react';
 
 const Favourite = ({ title, id }: any) => {
+  function handleClick(): void {
+    console.log(`clicked id: ${id} title: ${title}`);
+  }
+
   return (
-    <div className="favourite" id={id}>
-      <div className="favourite__img">
-        <img src="img/small-location.svg" alt="image" />
-      </div>
+    <div className="favourite" key={id}>
+      <img src="/img/close-bgarden-back.svg" alt="image" />
       <div className="favourite__title">{title}</div>
-      <button className="favourite__close-button">x</button>
+      <div className="favourite__close-button">
+        <button
+          className="favourite__close-button--button"
+          onClick={() => handleClick()}
+        >
+          &#10006;
+        </button>
+      </div>
     </div>
   );
 };

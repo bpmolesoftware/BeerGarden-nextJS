@@ -14,7 +14,7 @@ const CloseGardens = () => {
     router.push(`http://localhost:3000/${e}`);
   }
 
-  function showIndexSdadsadsa(direction: string) {
+  function showIndex(direction: string) {
     switch (direction) {
       case 'down':
         setCurrentPoint(currentPoint + 5);
@@ -51,7 +51,7 @@ const CloseGardens = () => {
         <button
           type="button"
           className="close-gardens__button close-gardens__button--prev"
-          onClick={() => showIndexSdadsadsa('up')}
+          onClick={() => showIndex('up')}
         >
           &#x2191;
         </button>
@@ -60,7 +60,7 @@ const CloseGardens = () => {
         <button
           type="button"
           className="close-gardens__button close-gardens__button--next"
-          onClick={() => showIndexSdadsadsa('down')}
+          onClick={() => showIndex('down')}
         >
           &#x2193;
         </button>

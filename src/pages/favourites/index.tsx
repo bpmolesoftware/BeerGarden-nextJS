@@ -27,11 +27,13 @@ const index = () => {
   return (
     <div>
       <Header />
-      {favouritesArray.length == 0
-        ? 'No favourites added!'
-        : favouritesArray.map((favourite) => {
-            return <Favourite id={favourite.id} title={favourite.title} />;
-          })}
+      <div className="favourites">
+        {favouritesArray.length == 0
+          ? 'No favourites added!'
+          : favouritesArray.map((favourite) => {
+              return <Favourite id={favourite.id} title={favourite.title} />;
+            })}
+      </div>
     </div>
   );
 };
