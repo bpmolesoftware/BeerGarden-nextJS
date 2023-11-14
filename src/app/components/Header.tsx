@@ -19,11 +19,16 @@ const Header = ({ id, title }: any) => {
   }
 
   function addToFavorites() {
-    favoriteData.push({ id: `${id}`, title: `${title}` });
-    if (typeof window !== 'undefined') {
+    if (localStorage.getItem('favorite') === null) {
+      favoriteData.push({ id: `${id}`, title: `${title}` });
+      localStorage.setItem('favorite', JSON.stringify(favoriteData));
+    } else if (favoriteData.some((fav: { id: any }) => fav.id != id)) {
+      favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
     }
   }
+
+  function addToLocalStorage() {}
 
   return (
     <div className="header">

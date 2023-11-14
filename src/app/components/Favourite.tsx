@@ -3,6 +3,10 @@ import React from 'react';
 const Favourite = ({ title, id }: any) => {
   function handleClick(): void {
     console.log(`clicked id: ${id} title: ${title}`);
+    const favorite = JSON.parse(localStorage.getItem('favorite'));
+    const filtered = favorite.filter((fav) => fav.id !== id);
+    localStorage.setItem('favorite', JSON.stringify(filtered));
+    location.reload();
   }
 
   return (
