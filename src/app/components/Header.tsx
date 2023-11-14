@@ -1,8 +1,12 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+
 import AddtoFavModal from './AddtoFavModal';
 
-const favoriteData: any = [];
+let favoriteData: any;
+if (typeof window !== 'undefined') {
+  favoriteData = JSON.parse(localStorage.getItem('favorite'));
+}
 
 const Header = ({ id, title }: any) => {
   const router = useRouter();
@@ -21,24 +25,24 @@ const Header = ({ id, title }: any) => {
 
   function addToFavorites() {
     if (localStorage.getItem('favorite') === null) {
+      favoriteData = [];
       favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
-    } else if (favoriteData.some((fav: { id: any }) => fav.id != id)) {
-      favoriteData.push({ id: `${id}`, title: `${title}` });
-      localStorage.setItem('favorite', JSON.stringify(favoriteData));
+    } else {
+      const found = favoriteData.some((el) => el.id === id);
+      if (!found) {
+        favoriteData.push({ id: `${id}`, title: `${title}` });
+        localStorage.setItem('favorite', JSON.stringify(favoriteData));
+      }
     }
-
     toggleModal();
   }
 
-  
-  const[modal , setModal] = useState(false);
-
+  const [modal, setModal] = useState(false);
 
   function toggleModal(): void {
-    
     setModal(!modal);
-    console.log("toggle: " + modal)
+    console.log(`toggle: ${modal}`);
   }
 
   return (
@@ -59,19 +63,14 @@ const Header = ({ id, title }: any) => {
           <div className="header__favourites--popup hidden">
             <div>Added to favourites</div>
             <button>&#10006;</button>
-
           </div>
         </div>
         <div className="header__gallery" onClick={() => goToFavaurites()}>
           <img className="image" src="/img/gallery.svg" alt="back" />
           <p className="header__title">Favourites</p>
         </div>
-        
-        
       </div>
-      {modal &&
-            (<AddtoFavModal title={title} toggle={toggleModal}></AddtoFavModal>)
-            }
+      {modal && <AddtoFavModal title={title} toggle={toggleModal} />}
       <div className="header-mobile">
         <div className="header-mobile__top">
           <div className="header__back" onClick={() => handleBack()}>
