@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const dbconnection = await createConnectionToDB();
 
   try {
-    const query = `SELECT name, commentText from comments as cmt JOIN beergardens_001 as beer ON beer.id = cmt.beergardenId where beer.id = ${id}`;
+    const query = `SELECT name, commentText,dateAndTime from comments as cmt JOIN beergardens_001 as beer ON beer.id = cmt.beergardenId where beer.id = ${id}`;
 
     const values = [];
     const [data] = await dbconnection.execute(query, values);
