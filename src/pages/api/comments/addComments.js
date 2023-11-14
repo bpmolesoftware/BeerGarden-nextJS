@@ -11,7 +11,7 @@ const myfunc = async (req, res) => {
     const dateTime = `${date} ${time}`;
 
     const { name, id, comment } = JSON.parse(JSON.stringify(req.body));
-    const query = `INSERT INTO Comments (name, commentText, beergardenId, dateAndTime, rating) values ("${name}", "${comment}", ${id}, "${date} ${time}")`;
+    const query = `INSERT INTO Comments (name, commentText, beergardenId, dateAndTime) values ("${name}", "${comment}", ${id}, "${date} ${time}")`;
 
     const values = [];
     const [data] = await dbconnection.execute(query, values);
