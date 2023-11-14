@@ -11,7 +11,7 @@ const CloseGardens = () => {
   const [currentPoint, setCurrentPoint] = useState(0);
 
   function handleOnClick(e: any) {
-    router.push(`http://localhost:3000/${e}`);
+    router.push(`/${e}`);
   }
 
   function showIndex(direction: string) {

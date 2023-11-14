@@ -4,14 +4,44 @@
   background-color: rgba(0, 0, 0, 0.568);
   margin-top: .5rem;
   padding: .5rem;
-
+  overflow: hidden;
+  position: relative;
   
   &-mobile{
         display: none;
+
+        @include breakpoint-down(sm) {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          gap: .5rem;
+          font-weight: 100;
+          font-size: 16px;
+
+          &__top{
+            width: 100%;
+            margin-left: 2rem;
+          }
+
+          &__bottom{
+            display: flex;
+            justify-content:space-evenly;
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.466);
+            width: 100%;
+            padding: 1rem;
+            z-index: 100;
+          }
+        }
   }
 
   @include breakpoint-down(sm) {
+    display: none;
   }
+
   & > * {
     z-index: 2;
   }

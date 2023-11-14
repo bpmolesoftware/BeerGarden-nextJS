@@ -16,8 +16,6 @@ const Weather = () => {
 
     if (res.ok) {
       const data = await res.json();
-      console.log(data);
-
       setWeatherData(data);
     }
   };
@@ -30,7 +28,6 @@ const Weather = () => {
   temperature = weatherData.daily?.temperature_2m_max;
   weatherCode = weatherData?.daily?.weather_code;
 
-  console.log(temperature);
 
   return (
     <div className="weather">
@@ -41,23 +38,19 @@ const Weather = () => {
       <div className="weather__current">
         <div className="weather__current--cityanddescription">
           <div className="city">Munich</div>
-          <div className="weather__current--description">Scatered Clouds</div>
         </div>
-        <div className="weather__current--icon">
-          <img src="/img/clouds.svg" alt="clouds" className="icon" />
-        </div>
+        
         <div className="weather__current--temp">
           {weatherData?.current?.temperature_2m.toFixed(0)}&#xb0;
         </div>
       </div>
       <div className="weather__next-five-days">
         {temperature?.map((element: any, index: number) => {
-          if (index < 5) {
+          if (index >0 && index < 6) {
             return (
               <WeatherWeekDay
                 temp={element}
                 time={weekdays[index]}
-                code={weatherCode[index]}
               />
             );
           }
@@ -65,7 +58,7 @@ const Weather = () => {
       </div>
       <div className="weather__next-five-days mobile">
         {temperature?.map((element: any, index: number) => {
-          if (index < 3) {
+          if (index >0 && index < 4) {
             return (
               <WeatherWeekDay
                 temp={element}

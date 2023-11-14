@@ -13,11 +13,15 @@
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
+  overflow:auto;
+
+  
   // position: relative;
 
   
 
   @include breakpoint-down(sm) {
+    height: 80%;
   grid-template-columns: 1fr;
   margin-top: 2rem;
   > :first-child{
