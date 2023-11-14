@@ -1,7 +1,22 @@
+.show-closest{
+  display: none;
+  
+  @include breakpoint-down(sm) {
+    display: flex;
+    bottom: 0;
+    background-color: red;
+    font-size: 1rem;
+    position: absolute;
+    background-color: red;
+    width: 30%;
+    
+    justify-content: center;
+  }
+}
+
 .close-gardens{
 
   position: absolute;
-
   z-index: 1;
   background-color: rgb(124, 124, 124);
   opacity: 0.9;

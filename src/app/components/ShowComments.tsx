@@ -14,6 +14,8 @@ const ShowComments = ({ id }: any) => {
     getCommentFromDbs(id);
   }, [comments]);
 
+  console.log(comments)
+
   return (
     <div className="show-comments">
       {comments?.map((comment) => {
@@ -21,7 +23,7 @@ const ShowComments = ({ id }: any) => {
           <div className="comment">
             <div className="comment__name-and-time">
               <div className="name">{comment?.name}</div>
-              <div className="time">9.11.2023 08:41:02</div>
+              <div className="time">{comment?.dateAndTime}</div>
             </div>
             <div className="comment__text">
               <img src="/img/comment.svg" alt="" />
