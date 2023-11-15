@@ -26,7 +26,6 @@ const Header = ({ id, title }: any) => {
   function addToFavorites() {
     console.log('localstorage: ', localStorage.getItem('favorite'));
     if (localStorage.getItem('favorite') === null) {
-      console.log('vlizash li tuk');
       favoriteData = [];
       favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
