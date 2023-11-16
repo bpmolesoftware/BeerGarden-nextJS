@@ -34,10 +34,8 @@ const calculateDistance = () => {
   coords.map((brewery: any) => {
     const [lat, lng, id, title] = brewery.split(',');
     const distance = haversineDistance(
-      48.137154, // Munich's latitude
-      11.576124, // Munich's longitude
-      // currentLocation.coordinates.lat,
-      // currentLocation.coordinates.lng,
+      currentLocation.coordinates.lat,
+      currentLocation.coordinates.lng,
       parseFloat(lat),
       parseFloat(lng),
     );

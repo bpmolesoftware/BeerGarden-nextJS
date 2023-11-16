@@ -11,6 +11,7 @@ import MapGarden from '@/app/components/MapGarden';
 import OpenTimes from '@/app/components/OpenTimes';
 import ShowComments from '@/app/components/ShowComments';
 import Weather from '@/app/components/Weather';
+import Footer from '@/app/components/Footer';
 
 const Index = () => {
   const router = useRouter();
@@ -56,6 +57,7 @@ const Index = () => {
       <Weather />
       <CommentForm id={props.id} />
       <ShowComments id={props.id} />
+      <Footer></Footer>
     </div>
   );
 };

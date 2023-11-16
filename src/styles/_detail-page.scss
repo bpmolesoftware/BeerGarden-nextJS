@@ -1,11 +1,15 @@
 .page-details{
-  background-image: url("/img/beergarden-detail-bg.svg");
+  background: no-repeat;
   > * {
     z-index: 2;
   }
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @include breakpoint-down(sm){
+    margin-bottom: 2rem;
+  }
 }
 
 .details-container{
@@ -21,9 +25,8 @@
   
 
   @include breakpoint-down(sm) {
-    height: 80%;
-  grid-template-columns: 1fr;
-  margin-top: 2rem;
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
   > :first-child{
     display: none;
   }

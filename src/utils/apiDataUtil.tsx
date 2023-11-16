@@ -1,3 +1,4 @@
+import { title } from 'process';
 import { useEffect, useState } from 'react';
 
 const getCoordsAndId = () => {
@@ -97,6 +98,35 @@ const getWeather = async () => {
       return JSON.parse(favorite);
     }
   }
+  
+
+  function addToFavorites(id : any, title : any , setModal : any , modal : any) {
+
+    let favoriteData: any;
+
+  if (typeof window !== 'undefined') {
+    favoriteData = JSON.parse(localStorage.getItem('favorite'));
+  }
+    console.log('localstorage: ', localStorage.getItem('favorite'));
+    if (localStorage.getItem('favorite') === null) {
+      favoriteData = [];
+      favoriteData.push({ id: `${id}`, title: `${title}` });
+      localStorage.setItem('favorite', JSON.stringify(favoriteData));
+      setModal(!modal);
+    } else if (localStorage.getItem('favorite')?.length === 0) {
+      favoriteData.push({ id: `${id}`, title: `${title}` });
+      localStorage.setItem('favorite', JSON.stringify(favoriteData));
+      setModal(!modal);
+    } else {
+      const found = favoriteData.some((fav: { id: any; }) => fav.id === id);
+      if (!found) {
+        favoriteData.push({ id: `${id}`, title: `${title}` });
+        localStorage.setItem('favorite', JSON.stringify(favoriteData));
+        setModal(!modal);
+      }
+    }
+  }
+
 
 export {
   getComments,
@@ -106,4 +136,5 @@ export {
   getGeolocation,
   getWeather,
   getFavourites,
+  addToFavorites
 };

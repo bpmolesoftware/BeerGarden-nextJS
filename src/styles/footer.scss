@@ -1,0 +1,18 @@
+.footer{
+  display: none;
+  @include breakpoint-down(sm){
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 100;
+    font-size: 16px;
+    padding: .5rem;
+    overflow: hidden;
+    justify-content: space-between;
+    padding: 2rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.233);
+  }
+}

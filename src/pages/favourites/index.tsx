@@ -5,15 +5,16 @@ import React, { useEffect, useState } from 'react';
 import Favourite from '@/app/components/Favourite';
 import Header from '@/app/components/Header';
 import { getFavourites } from '@/utils/apiDataUtil';
+import Footer from '@/app/components/Footer';
 
 const index = () => {
 
-  const [favouritesArray, setFavouritesArray]= useState();
+  const [favouritesArray, setFavouritesArray]= useState([]);
 
   useEffect(() => {
     setFavouritesArray(getFavourites())
   },[])
-
+  
   return (
     <div>
       <Header />
@@ -24,6 +25,7 @@ const index = () => {
           })
           : <div className='no-favourites'><div className="no-favourites__notification">No favourites added!</div></div> }
       </div>
+      <Footer></Footer>
     </div>
   );
 };

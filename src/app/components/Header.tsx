@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import AddtoFavModal from './AddtoFavModal';
+import { addToFavorites } from '@/utils/apiDataUtil';
 
 let favoriteData: any;
 if (typeof window !== 'undefined') {
@@ -10,6 +11,18 @@ if (typeof window !== 'undefined') {
 
 const Header = ({ id, title }: any) => {
   const router = useRouter();
+
+  const[isFavourites , setIsFavourites] = useState(false);
+
+  console.log(router.asPath)
+
+  useEffect(() =>{
+    if(router.asPath == "/favourites"){
+      setIsFavourites(true)
+    }else {
+      setIsFavourites(false)
+    }
+  }, [])
 
   function handleBack() {
     router.back();
@@ -23,29 +36,12 @@ const Header = ({ id, title }: any) => {
     router.push(`/favourites`);
   }
 
-  function addToFavorites() {
-    console.log('localstorage: ', localStorage.getItem('favorite'));
-    if (localStorage.getItem('favorite') === null) {
-      favoriteData = [];
-      favoriteData.push({ id: `${id}`, title: `${title}` });
-      localStorage.setItem('favorite', JSON.stringify(favoriteData));
-      toggleModal();
-    } else if (localStorage.getItem('favorite')?.length === 0) {
-      favoriteData.push({ id: `${id}`, title: `${title}` });
-      localStorage.setItem('favorite', JSON.stringify(favoriteData));
-      toggleModal();
-    } else {
-      const found = favoriteData.some((fav) => fav.id === id);
-      if (!found) {
-        favoriteData.push({ id: `${id}`, title: `${title}` });
-        localStorage.setItem('favorite', JSON.stringify(favoriteData));
-        toggleModal();
-      }
-    }
+  function handleAddFavs(): void {
+    addToFavorites(id , title , setModal , modal)
   }
 
   const [modal, setModal] = useState(false);
-
+  
   function toggleModal(): void {
     setModal(!modal);
     console.log(`toggle: ${modal}`);
@@ -54,48 +50,29 @@ const Header = ({ id, title }: any) => {
   return (
     <>
       <div className="header">
-        <div className="header__back" onClick={() => handleBack()}>
-          <img className="image" src="/img/back-arrow.svg" alt="back" />
-          <p className="header__title">Back </p>
-        </div>
-        <div className="header__home" onClick={() => handleHome()}>
-          <img className="image" src="/img/home.svg" alt="back" />
-          <p className="header__title">Home </p>
-        </div>
-        <div className="header__favourites" onClick={() => addToFavorites()}>
-          <img className="image" src="/img/fav.svg" alt="back" />
-          <p className="header__title">Add to favourites</p>
-
-          <div className="header__favourites--popup hidden">
-            <div>Added to favourites</div>
-            <button>&#10006;</button>
-          </div>
-        </div>
-        <div className="header__gallery" onClick={() => goToFavaurites()}>
-          <img className="image" src="/img/gallery.svg" alt="back" />
-          <p className="header__title">Favourites</p>
-        </div>
-      </div>
-      {modal && <AddtoFavModal title={title} toggle={toggleModal} />}
-      <div className="header-mobile">
-        <div className="header-mobile__top">
-          <div className="header__back" onClick={() => handleBack()}>
+        <div className="header__back">
+          <div className="header__back-button" onClick={() => handleBack()}>
             <img className="image" src="/img/back-arrow.svg" alt="back" />
             <p className="header__title">Back </p>
           </div>
         </div>
-        <div className="header-mobile__bottom">
+        <div className="header__navigation hidden">
           <div className="header__home" onClick={() => handleHome()}>
             <img className="image" src="/img/home.svg" alt="back" />
+            <p className="header__title">Home</p>
           </div>
-          <div className="header__favourites" onClick={() => addToFavorites()}>
+          {!isFavourites && <div className="header__navigation--add-to-favourites" onClick={() => handleAddFavs()}>
             <img className="image" src="/img/fav.svg" alt="back" />
-          </div>
-          <div className="header__gallery" onClick={() => goToFavaurites()}>
+            <p className="header__title">Add to Favourites</p>
+          </div>}
+          <div className="header__navigation--go-to-favourites" onClick={() => goToFavaurites()}>
             <img className="image" src="/img/gallery.svg" alt="back" />
+            <p className="header__title">Favourites</p>
           </div>
         </div>
       </div>
+      {modal && <AddtoFavModal title={title} toggle={toggleModal} />}
+      
     </>
   );
 };
