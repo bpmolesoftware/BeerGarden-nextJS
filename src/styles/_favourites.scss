@@ -12,7 +12,6 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.651);
   justify-content: space-between;
- 
 
   .favourite{
     display: flex;
@@ -63,5 +62,18 @@
     margin-right: .6rem;
     margin-top: .6rem;
   }
+}
+
+.no-favourites{
+  display: flex;
+  justify-content: center;
+  width: 100%;
   
+  &__notification{
+    width: 50%;
+    text-align: center;
+    padding: 4rem;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.493);
+  }
 }

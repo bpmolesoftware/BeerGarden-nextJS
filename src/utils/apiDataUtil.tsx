@@ -89,6 +89,15 @@ const getWeather = async () => {
   }
 };
 
+  function getFavourites() {
+    let favorite: any;
+
+    if (typeof window !== 'undefined') {
+      favorite = localStorage.getItem('favorite');
+      return JSON.parse(favorite);
+    }
+  }
+
 export {
   getComments,
   getCoordsAndId,
@@ -96,4 +105,5 @@ export {
   getDataBySearch,
   getGeolocation,
   getWeather,
+  getFavourites,
 };

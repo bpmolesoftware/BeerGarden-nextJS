@@ -8,7 +8,7 @@
   &__name{
     color: #000;
     font-size: 18px;
-    width: 45%;
+    width: 75%;
     padding: .7rem;
     border-radius: 8px;
 
@@ -20,9 +20,10 @@
   }
 
   label{
-    color: #8b8b8b;
+    color: #aaaaaa;
     font-size: 18px;
     font-style: italic;
+    font-weight: bold;
   }
 
   ::placeholder{

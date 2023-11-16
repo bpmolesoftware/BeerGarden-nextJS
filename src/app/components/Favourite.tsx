@@ -1,18 +1,14 @@
 import router from 'next/router';
 import React from 'react';
 
-const Favourite = ({ title, id }: any) => {
+const Favourite = ({ title, id , setFavouritesArray}: any) => {
+
   function handleClick(): void {
     console.log(`clicked id: ${id} title: ${title}`);
     const favorite = JSON.parse(localStorage.getItem('favorite'));
     const filtered = favorite.filter((fav) => fav.id !== id);
     localStorage.setItem('favorite', JSON.stringify(filtered));
-    if (
-      localStorage.getItem('favorite') === null ||
-      localStorage.getItem('favorite')?.length === 2
-    ) {
-      localStorage.clear();
-    }
+    setFavouritesArray(localStorage.setItem('favorite', JSON.stringify(filtered)))
   }
 
   function goToBeerGarden() {

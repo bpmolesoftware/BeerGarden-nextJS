@@ -11,9 +11,9 @@
 .details-container{
   padding: 3rem;
   display: grid;
-  height: 100vh;
+  height: fit-content;
   grid-template-columns: 1fr 1fr;
-  overflow:auto;
+  overflow:hidden;
 
   
   // position: relative;

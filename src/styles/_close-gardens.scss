@@ -1,7 +1,21 @@
+.show-closest{
+  display: none;
+  
+  @include breakpoint-down(sm) {
+    display: flex;
+    bottom: 0;
+    background-color: red;
+    font-size: 1rem;
+    position: absolute;
+    background-color: red;
+    width: 30%;
+    justify-content: center;
+  }
+}
+
 .close-gardens{
 
   position: absolute;
-
   z-index: 1;
   background-color: rgb(124, 124, 124);
   opacity: 0.9;
@@ -9,10 +23,14 @@
   height:100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
 
   @include breakpoint-down(sm) {
-    display: none;
+    background-color: rgba(0, 0, 0, 0.911);
+    gap: .2rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: 18px;    
   }
   //const icon = '/img/close-bgarden-back.svg';
   
@@ -25,7 +43,11 @@
     align-items:flex-end;
     padding: 0.4rem;
     background-size: cover;
+    max-height: 20%;
 
+    @include breakpoint-down(sm) {
+         
+    }
 
     &:hover{
       opacity:0.85;
