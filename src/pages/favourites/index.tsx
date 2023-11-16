@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import '@/styles/global.scss';
+
+import React, { useEffect, useState } from 'react';
+
 import Favourite from '@/app/components/Favourite';
 import Header from '@/app/components/Header';
 
@@ -22,17 +24,19 @@ const index = () => {
     setFavouritesArray(favourite);
   }, []);
 
-  console.log(favouritesArray);
+  // console.log(favouritesArray);
 
   return (
     <div>
       <Header />
       <div className="favourites">
-        {favouritesArray != null && favouritesArray.length != 0
-          ? favouritesArray.map((favourite) => {
+        {favouritesArray != null && favouritesArray.length != 0 ? (
+          favouritesArray.map((favourite) => {
             return <Favourite id={favourite.id} title={favourite.title} />;
           })
-          : <div>No favourites added!</div> }
+        ) : (
+          <div>No favourites added!</div>
+        )}
       </div>
     </div>
   );
