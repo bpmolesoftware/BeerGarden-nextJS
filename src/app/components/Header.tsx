@@ -29,17 +29,19 @@ const Header = ({ id, title }: any) => {
       favoriteData = [];
       favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
+      toggleModal();
     } else if (localStorage.getItem('favorite')?.length === 0) {
       favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
+      toggleModal();
     } else {
-      const found = favoriteData.some((el) => el.id === id);
+      const found = favoriteData.some((fav) => fav.id === id);
       if (!found) {
         favoriteData.push({ id: `${id}`, title: `${title}` });
         localStorage.setItem('favorite', JSON.stringify(favoriteData));
+        toggleModal();
       }
     }
-    toggleModal();
   }
 
   const [modal, setModal] = useState(false);
