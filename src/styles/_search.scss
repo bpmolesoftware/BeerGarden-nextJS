@@ -7,6 +7,7 @@
   @include breakpoint-down(sm) {
     width: 100%;
     font-size: 18px;
+    z-index: 1;
   }
   
   &__input{

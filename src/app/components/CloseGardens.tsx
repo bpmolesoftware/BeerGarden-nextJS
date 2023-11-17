@@ -1,9 +1,14 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 
 import { calculateDistance } from '../../utils/DistanceCalculator';
 
-const CloseGardens = () => {
+const CloseGardens = ({showClosest, setShowClosest } : any) => {
+
+  const styles = { 
+    transform: `translateY(${showClosest}%)` 
+  }
+
   const router = useRouter();
 
   const data = calculateDistance();
@@ -27,8 +32,15 @@ const CloseGardens = () => {
     }
   }
 
+  function handleCloseGardens(){
+    setShowClosest(100);
+  }
+
   return (
-    <div className="close-gardens">
+    <div className="close-gardens" style={styles}>
+      <div className="close-button">
+        <button className="close-button" onClick={() => handleCloseGardens()}>&#10006;</button>
+      </div>
       {data
         .slice(currentPoint, currentPoint + 5)
         .sort((a, b) => a.distance - b.distance)

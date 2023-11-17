@@ -16,7 +16,7 @@ const index = () => {
   },[])
   
   return (
-    <div>
+    <div className='favourites-page'>
       <Header />
       <div className="favourites">
         {favouritesArray != null && favouritesArray.length != 0

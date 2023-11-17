@@ -1,14 +1,13 @@
 .header{
   display: flex;
   background-color: rgba(0, 0, 0, 0.568);
-  margin-top: .5rem;
   padding: .5rem;
   overflow: hidden;
   justify-content: space-between;
   transition: top 0.2s ease-in-out;
 
   @include breakpoint-down(sm) {
-    margin-top: 2rem;
+    // margin-top: 2rem;
     background-color:transparent;
   }
   
@@ -38,10 +37,6 @@
       display: flex; 
       gap: 1rem;
       align-items: center;
-
-      @include breakpoint-down(sm) {
-        
-      }
 
     }
   }

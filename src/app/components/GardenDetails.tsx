@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const GardenDetails = ({ title, description }: any) => {
+
+  const [isOpen , setIsOpen] = useState(false);
+
+  const style = {
+    WebkitLineClamp: 5,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    display: '-webkit-box',
+  }
+
   return (
     <div className="details">
       <div className="title"> {title}</div>
-      <div className="info">{description}</div>
+      <div className="info" style={isOpen ? null : style}>{description}</div>
+      <button className="read-more" onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Read less..." : "Read more..."}</button>
     </div>
   );
 };

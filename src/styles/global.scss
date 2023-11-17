@@ -1,4 +1,5 @@
 @import "media-queries";
+@import "footer";
 @import "search";
 @import "favourites";
 @import "close-gardens";
@@ -11,17 +12,12 @@
 
 body{
 
-  // font-family: Source Sans Pro;
-  background-image: url("/img/home-background.svg");
-  // background-size: cover;
-  background-attachment: fixed;
-  background-size: cover;
+  
   font-family: Source Sans Pro;
   
-  height: 100hv;
+  // height: 100hv;
   margin: 0;
   padding: 0;
-  background-color: #000;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 18px;
   font-weight: 800;
@@ -31,10 +27,7 @@ body{
   @include breakpoint-down(sm) {
   background-image: url("/img/home-mobile.svg");
   background-size: cover;
-  overflow: hidden;
-  font-size: 14vw;
-
-
+  height: 100vh;
   }
    
 }

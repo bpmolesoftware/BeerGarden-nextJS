@@ -4,39 +4,49 @@
   @include breakpoint-down(sm) {
     display: flex;
     bottom: 0;
-    background-color: red;
     font-size: 1rem;
     position: absolute;
-    background-color: red;
-    width: 30%;
     justify-content: center;
+    width: 100%;
+    
+    .show{
+      padding: 1rem;
+      border-radius: 8px 8px 0 0;
+      background-color: #8b8b8b;
+    }
+  }
+}
+
+.close-button{
+  display: none;
+
+  @include breakpoint-down(sm) {
+    display: block;    
   }
 }
 
 .close-gardens{
-
   position: absolute;
-  z-index: 1;
   background-color: rgb(124, 124, 124);
+  z-index: 8;
   opacity: 0.9;
   width: 20%;
   height:100vh;
-  display: flex;
+  display: flex ;
   flex-direction: column;
-  // justify-content: space-evenly;
-
+  
   @include breakpoint-down(sm) {
+    transition: 0.5s;
     background-color: rgba(0, 0, 0, 0.911);
     gap: .2rem;
     width: 100%;
     padding: 1rem;
     font-size: 18px;    
   }
-  //const icon = '/img/close-bgarden-back.svg';
   
   .garden{
+    border-radius: 8px;
     background-image: url("/img/close-bgarden-back.svg");
-   
     height: 100%;
     display: flex;
     justify-content: space-between;
