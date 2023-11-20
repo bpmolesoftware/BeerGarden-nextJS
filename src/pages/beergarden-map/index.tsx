@@ -3,38 +3,30 @@ import '@/styles/global.scss';
 import CloseGardens from '@/app/components/CloseGardens';
 import MapGoogle from '@/app/components/MapGoogle';
 import ShowClosesGardens from '@/app/components/ShowClosesGardens';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Index = () => {
 
   const [showClosest , setShowClosest] = useState(0)
 
-  let width  :any;
+  let width : any;
 
   if (typeof window !== 'undefined') {
+    width = window.innerWidth;
     window.addEventListener('resize', handleResize)
   }
 
   function handleResize(){
-    width  = window.innerWidth;
-
-    let widthInt = parseInt(width);
-    console.log("width int :  " + widthInt)
-    
-    if(widthInt > 768){
+    if(width > 768){
       setShowClosest(0)
-      console.log(width)
-    }
-    if(widthInt < 768){
+    }else{
       setShowClosest(100)
-      console.log(width)
     }
   }
 
-
   return (
     <div>
-      <CloseGardens showClosest={showClosest} setShowClosest={setShowClosest}/>
+      <CloseGardens showClosest={showClosest} setShowClosest={setShowClosest} width={width} />
       <MapGoogle />
       <ShowClosesGardens setShowClosest={setShowClosest} showClosest={showClosest}/>
     </div>

@@ -14,8 +14,6 @@ const ShowComments = ({ id }: any) => {
     getCommentFromDbs(id);
   }, [comments]);
 
-  console.log(comments)
-
   return (
     <div className="show-comments">
       {comments?.map((comment) => {

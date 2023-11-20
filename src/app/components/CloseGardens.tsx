@@ -39,7 +39,7 @@ const CloseGardens = ({showClosest, setShowClosest } : any) => {
   return (
     <div className="close-gardens" style={styles}>
       <div className="close-button">
-        <button className="close-button" onClick={() => handleCloseGardens()}>&#10006;</button>
+        <div className="close-button" ><button onClick={() => handleCloseGardens()}>Show Beergarden Map</button></div>
       </div>
       {data
         .slice(currentPoint, currentPoint + 5)

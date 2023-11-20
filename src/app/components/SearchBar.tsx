@@ -34,7 +34,7 @@ const SearchBar = () => {
   const handleClickOnDropDown = (e: any) => {
     const { id } = e;
     router.push({
-      pathname: `http://localhost:3000/${id}`,
+      pathname: `/${id}`,
       query: { id },
     });
   };

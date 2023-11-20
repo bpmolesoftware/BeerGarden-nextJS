@@ -14,7 +14,6 @@ const Header = ({ id, title }: any) => {
 
   const[isFavourites , setIsFavourites] = useState(false);
 
-  console.log(router.asPath)
 
   useEffect(() =>{
     if(router.asPath == "/favourites"){
@@ -44,7 +43,6 @@ const Header = ({ id, title }: any) => {
   
   function toggleModal(): void {
     setModal(!modal);
-    console.log(`toggle: ${modal}`);
   }
 
   return (

@@ -107,7 +107,6 @@ const getWeather = async () => {
   if (typeof window !== 'undefined') {
     favoriteData = JSON.parse(localStorage.getItem('favorite'));
   }
-    console.log('localstorage: ', localStorage.getItem('favorite'));
     if (localStorage.getItem('favorite') === null) {
       favoriteData = [];
       favoriteData.push({ id: `${id}`, title: `${title}` });

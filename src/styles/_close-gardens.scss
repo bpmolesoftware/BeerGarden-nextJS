@@ -21,7 +21,17 @@
   display: none;
 
   @include breakpoint-down(sm) {
-    display: block;    
+    display: flex;    
+    width: 100%;
+    justify-content: center;
+    
+    > button {  
+      font-size: 1rem;
+      width: fit-content;
+      padding: .7rem;
+      border-radius: 8px 8px 0 0;
+      background-color: #8b8b8b;
+    }
   }
 }
 

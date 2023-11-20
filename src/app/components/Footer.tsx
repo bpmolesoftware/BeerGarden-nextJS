@@ -31,7 +31,6 @@ const Footer = ({id , title} : any) => {
   
   function toggleModal(): void {
     setModal(!modal);
-    console.log(`toggle: ${modal}`);
   }
 
   return (
