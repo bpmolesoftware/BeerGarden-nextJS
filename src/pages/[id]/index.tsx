@@ -35,8 +35,9 @@ const Index = () => {
       response.json().then((data: any) => {
         // eslint-disable-next-line array-callback-return
         data.results?.map((e: any) => {
+          console.log(e)
           setTitle(e.title);
-          setOpenTimes(e.openTimes);
+          setOpenTimes(e.openingtimes);
           setAddress(e.address);
           setDescription(e.description);
           setCoords(e.coordinates);

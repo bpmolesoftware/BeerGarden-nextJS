@@ -39,11 +39,11 @@ const Footer = ({id , title} : any) => {
             <img className="image" src="/img/home.svg" alt="back" />
             <p className="footer__title">Home</p>
           </div>
-          {!isFavourites && <div className="header__navigation--add-to-favourites" onClick={() => handleAddFavs()}>
+          {!isFavourites && <div className="footer__navigation--add-to-favourites" onClick={() => handleAddFavs()}>
             <img className="image" src="/img/fav.svg" alt="back" />
             <p className="footer__title">Add to Favourites</p>
           </div>}
-          <div className="header__navigation--go-to-favourites" onClick={() => goToFavaurites()}>
+          <div className="footer__navigation--go-to-favourites" onClick={() => goToFavaurites()}>
             <img className="image" src="/img/gallery.svg" alt="back" />
             <p className="footer__title">Favourites</p>
           </div>
