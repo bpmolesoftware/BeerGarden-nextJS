@@ -1,6 +1,9 @@
-import { title } from 'process';
 import { useEffect, useState } from 'react';
 
+let host: any;
+if (typeof window !== 'undefined') {
+  host = window.location.host;
+}
 const getCoordsAndId = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [coords, setCoords]: any = useState([]);
@@ -21,7 +24,7 @@ const getCoordsAndId = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    fetch(`http://localhost:3000/api/getdata`).then((response) =>
+    fetch(`http://${host}/api/getdata`).then((response) =>
       response.json().then((data) => {
         populateCoords(data.results);
         // populateAdvice(data.slip.id , data.slip.advice)
@@ -54,7 +57,7 @@ const getGeolocation = () => {
 };
 
 const getDataById = async (id: any) => {
-  const res = await fetch(`http://localhost:3000/api/search/${id}`);
+  const res = await fetch(`http://${host}/api/search/${id}`);
 
   if (res.ok) {
     const data = await res.json();
@@ -63,7 +66,7 @@ const getDataById = async (id: any) => {
 };
 
 const getDataBySearch = async (title: any) => {
-  const res = await fetch(`http://localhost:3000/api/textSearch/${title}`);
+  const res = await fetch(`http://${host}/api/textSearch/${title}`);
 
   if (res.ok) {
     const data = await res.json();
@@ -72,7 +75,7 @@ const getDataBySearch = async (title: any) => {
 };
 
 const getComments = async (comment: any) => {
-  const res = await fetch(`http://localhost:3000/api/comments/${comment}`);
+  const res = await fetch(`http://${host}/api/comments/${comment}`);
 
   if (res.ok) {
     const data = await res.json();
@@ -90,50 +93,47 @@ const getWeather = async () => {
   }
 };
 
-  function getFavourites() {
-    let favorite: any;
+function getFavourites() {
+  let favorite: any;
 
-    if (typeof window !== 'undefined') {
-      favorite = localStorage.getItem('favorite');
-      return JSON.parse(favorite);
-    }
+  if (typeof window !== 'undefined') {
+    favorite = localStorage.getItem('favorite');
+    return JSON.parse(favorite);
   }
-  
+}
 
-  function addToFavorites(id : any, title : any , setModal : any , modal : any) {
-
-    let favoriteData: any;
+function addToFavorites(id: any, title: any, setModal: any, modal: any) {
+  let favoriteData: any;
 
   if (typeof window !== 'undefined') {
     favoriteData = JSON.parse(localStorage.getItem('favorite'));
   }
-    if (localStorage.getItem('favorite') === null) {
-      favoriteData = [];
+  if (localStorage.getItem('favorite') === null) {
+    favoriteData = [];
+    favoriteData.push({ id: `${id}`, title: `${title}` });
+    localStorage.setItem('favorite', JSON.stringify(favoriteData));
+    setModal(!modal);
+  } else if (localStorage.getItem('favorite')?.length === 0) {
+    favoriteData.push({ id: `${id}`, title: `${title}` });
+    localStorage.setItem('favorite', JSON.stringify(favoriteData));
+    setModal(!modal);
+  } else {
+    const found = favoriteData.some((fav: { id: any }) => fav.id === id);
+    if (!found) {
       favoriteData.push({ id: `${id}`, title: `${title}` });
       localStorage.setItem('favorite', JSON.stringify(favoriteData));
       setModal(!modal);
-    } else if (localStorage.getItem('favorite')?.length === 0) {
-      favoriteData.push({ id: `${id}`, title: `${title}` });
-      localStorage.setItem('favorite', JSON.stringify(favoriteData));
-      setModal(!modal);
-    } else {
-      const found = favoriteData.some((fav: { id: any; }) => fav.id === id);
-      if (!found) {
-        favoriteData.push({ id: `${id}`, title: `${title}` });
-        localStorage.setItem('favorite', JSON.stringify(favoriteData));
-        setModal(!modal);
-      }
     }
   }
-
+}
 
 export {
+  addToFavorites,
   getComments,
   getCoordsAndId,
   getDataById,
   getDataBySearch,
+  getFavourites,
   getGeolocation,
   getWeather,
-  getFavourites,
-  addToFavorites
 };

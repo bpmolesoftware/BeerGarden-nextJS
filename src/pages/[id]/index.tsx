@@ -5,13 +5,18 @@ import { useEffect, useState } from 'react';
 
 import Address from '@/app/components/Address';
 import CommentForm from '@/app/components/CommentForm';
+import Footer from '@/app/components/Footer';
 import GardenDetails from '@/app/components/GardenDetails';
 import Header from '@/app/components/Header';
 import MapGarden from '@/app/components/MapGarden';
 import OpenTimes from '@/app/components/OpenTimes';
 import ShowComments from '@/app/components/ShowComments';
 import Weather from '@/app/components/Weather';
-import Footer from '@/app/components/Footer';
+
+let host: any;
+if (typeof window !== 'undefined') {
+  host = window.location.host;
+}
 
 const Index = () => {
   const router = useRouter();
@@ -31,11 +36,11 @@ const Index = () => {
   const [coords, setCoords] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/search/${props.id}`).then((response) =>
+    fetch(`http://${host}/api/search/${props.id}`).then((response) =>
       response.json().then((data: any) => {
         // eslint-disable-next-line array-callback-return
         data.results?.map((e: any) => {
-          console.log(e)
+          console.log(e);
           setTitle(e.title);
           setOpenTimes(e.openingtimes);
           setAddress(e.address);
@@ -58,7 +63,7 @@ const Index = () => {
       <Weather />
       <CommentForm id={props.id} />
       <ShowComments id={props.id} />
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
