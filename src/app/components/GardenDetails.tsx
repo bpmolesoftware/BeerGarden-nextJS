@@ -10,11 +10,16 @@ const GardenDetails = ({ title, description }: any) => {
     overflow: 'hidden',
     display: '-webkit-box',
   }
+  const noStyle = {
+    
+  }
+
+  
 
   return (
     <div className="details">
       <div className="title"> {title}</div>
-      <div className="info" style={isOpen ? null : style}>{description}</div>
+      <div className="info" style={isOpen ? noStyle : style}>{description}</div>
       <button className="read-more" onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Read less..." : "Read more..."}</button>
     </div>
   );
