@@ -34,13 +34,13 @@ const Index = () => {
   const [address, setAddress] = useState('');
   const [description, setDescription] = useState('');
   const [coords, setCoords] = useState('');
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     fetch(`http://${host}/api/search/${props.id}`).then((response) =>
       response.json().then((data: any) => {
         // eslint-disable-next-line array-callback-return
         data.results?.map((e: any) => {
-          console.log(e);
           setTitle(e.title);
           setOpenTimes(e.openingtimes);
           setAddress(e.address);
@@ -53,7 +53,7 @@ const Index = () => {
 
   return (
     <div className="page-details">
-      <Header id={props.id} title={title} />
+      <Header id={props.id} title={title} setModal={setModal} modal={modal}/>
       <div className="details-container">
         <MapGarden coords={coords} />
         <GardenDetails title={title} description={description} />
@@ -63,7 +63,7 @@ const Index = () => {
       <Weather />
       <CommentForm id={props.id} />
       <ShowComments id={props.id} />
-      <Footer />
+      <Footer id={props.id} title={title} setModal={setModal} modal={modal}/>
     </div>
   );
 };

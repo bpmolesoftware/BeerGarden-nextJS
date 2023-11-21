@@ -54,7 +54,7 @@ const CloseGardens = ({showClosest, setShowClosest } : any) => {
                 alt=""
               />
               {data.distance > 1000
-                ? `${(data.distance / 1000).toFixed(2)} km`
+                ? `${(data.distance / 1000).toFixed(0)} km`
                 : `${data.distance.toFixed()} m`}
             </div>
           </div>

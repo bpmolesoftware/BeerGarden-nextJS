@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
   favoriteData = JSON.parse(localStorage.getItem('favorite'));
 }
 
-const Header = ({ id, title }: any) => {
+const Header = ({ id, title , setModal , modal}: any) => {
   const router = useRouter();
 
   const[isFavourites , setIsFavourites] = useState(false);
@@ -39,7 +39,6 @@ const Header = ({ id, title }: any) => {
     addToFavorites(id , title , setModal , modal)
   }
 
-  const [modal, setModal] = useState(false);
   
   function toggleModal(): void {
     setModal(!modal);

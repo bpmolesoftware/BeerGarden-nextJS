@@ -14,6 +14,8 @@ const index = () => {
   useEffect(() => {
     setFavouritesArray(getFavourites())
   },[])
+
+  console.log(favouritesArray);
   
   return (
     <div className='favourites-page'>
@@ -25,7 +27,7 @@ const index = () => {
           })
           : <div className='no-favourites'><div className="no-favourites__notification">No favourites added!</div></div> }
       </div>
-      <Footer></Footer>
+      <Footer/>
     </div>
   );
 };

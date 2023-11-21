@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   padding: 4rem;
-  gap: 1rem;
+  gap: 1.2rem;
 
   &__name{
     color: #000;
@@ -20,10 +20,10 @@
   }
 
   label{
-    color: #aaaaaa;
-    font-size: 18px;
-    font-style: italic;
+    color: #FFF;
+    font-size: 22px;
     font-weight: bold;
+    font-style: italic;
   }
 
   ::placeholder{
@@ -45,17 +45,14 @@
   }
 
   .send-comment{
-    height: 32px;
-    padding: 0 6px 0 6px;
-    margin: 8px 8px 8px 0;
+    padding: 1.2rem;
     background-color: #313b31;
-    color: #8e8175;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
     width: fit-content;
-    font-size: 16px;
-    overflow: hidden;
+    font-size: 18px;
   }
 }

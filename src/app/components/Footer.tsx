@@ -3,7 +3,7 @@ import router from 'next/router';
 import React, { useEffect, useState } from 'react'
 import AddtoFavModal from './AddtoFavModal';
 
-const Footer = ({id , title} : any) => {
+const Footer = ({id , title , setModal , modal} : any) => {
 
   const[isFavourites , setIsFavourites] = useState(false);
 
@@ -27,7 +27,6 @@ const Footer = ({id , title} : any) => {
     addToFavorites(id , title , setModal , modal)
   }
 
-  const [modal, setModal] = useState(false);
   
   function toggleModal(): void {
     setModal(!modal);
@@ -47,7 +46,6 @@ const Footer = ({id , title} : any) => {
             <img className="image" src="/img/gallery.svg" alt="back" />
             <p className="footer__title">Favourites</p>
           </div>
-          {modal && <AddtoFavModal title={title} toggle={toggleModal} />}
     </div>
   )
 }
