@@ -27,6 +27,8 @@ const MapGoogle = () => {
     });
   }
 
+  const iconGeo = "/img/location.svg";
+
   return (
     <Map
       google={window.google}
@@ -43,7 +45,9 @@ const MapGoogle = () => {
         position={{
           lat: geoLocation.coordinates.lat,
           lng: geoLocation.coordinates.lng,
-        }}
+        }
+      }
+      icon = {iconGeo}
       />
 
       {coordsAndId.map(function (marker: any) {
