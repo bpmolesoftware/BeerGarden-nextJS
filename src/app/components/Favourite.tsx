@@ -2,10 +2,9 @@ import router from 'next/router';
 import React from 'react';
 
 const Favourite = ({ title, id }: any) => {
-
   function handleClick(): void {
-    const favorite = JSON.parse(localStorage.getItem('favorite'));
-    const filtered = favorite.filter((fav) => fav.id !== id);
+    const favorite = JSON.parse(localStorage.getItem('favorite') || '{}');
+    const filtered = favorite.filter((fav: { id: any }) => fav.id !== id);
     localStorage.setItem('favorite', JSON.stringify(filtered));
     window.location.reload();
   }

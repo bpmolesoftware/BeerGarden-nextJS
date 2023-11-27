@@ -8,12 +8,17 @@ import { getCoordsAndId, getGeolocation } from '@/utils/apiDataUtil';
 
 import SearchBar from './SearchBar';
 
+let host: any;
+if (typeof window !== 'undefined') {
+  host = window.location.host;
+}
+
 const style = {
   width: '100%',
   height: '100%',
 };
 const MapGoogle = () => {
-  const icon = 'img/beer-marker.svg';
+  const icon = '/img/beer-marker.svg';
 
   const geoLocation = getGeolocation();
   const coordsAndId = getCoordsAndId();
@@ -22,12 +27,12 @@ const MapGoogle = () => {
 
   function handleOnClick(id: any, title: any) {
     router.push({
-      pathname: `http://localhost:3000/${id}`,
+      pathname: `http://${host}/${id}`,
       query: { id, title },
     });
   }
 
-  const iconGeo = "/img/location.svg";
+  const iconGeo = '/img/location.svg';
 
   return (
     <Map
@@ -45,9 +50,8 @@ const MapGoogle = () => {
         position={{
           lat: geoLocation.coordinates.lat,
           lng: geoLocation.coordinates.lng,
-        }
-      }
-      icon = {iconGeo}
+        }}
+        icon={iconGeo}
       />
 
       {coordsAndId.map(function (marker: any) {

@@ -106,7 +106,7 @@ function addToFavorites(id: any, title: any, setModal: any, modal: any) {
   let favoriteData: any;
 
   if (typeof window !== 'undefined') {
-    favoriteData = JSON.parse(localStorage.getItem('favorite'));
+    favoriteData = JSON.parse(localStorage.getItem('favorite') || '{}');
   }
   if (localStorage.getItem('favorite') === null) {
     favoriteData = [];
