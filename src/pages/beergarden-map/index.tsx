@@ -2,9 +2,9 @@ import '@/styles/global.scss';
 
 import { useState } from 'react';
 
-import CloseGardens from '@/app/components/CloseGardens';
-import MapGoogle from '@/app/components/MapGoogle';
-import ShowClosesGardens from '@/app/components/ShowClosesGardens';
+import CloseGardens from '@/components/CloseGardens';
+import MapGoogle from '@/components/MapGoogle';
+import ShowClosesGardens from '@/components/ShowClosesGardens';
 
 const Index = () => {
   const [showClosest, setShowClosest] = useState(0);

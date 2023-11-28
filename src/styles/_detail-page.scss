@@ -35,10 +35,6 @@
     padding: 1rem;
     min-height: 380px;
    }
-  
-  // position: relative;
-
-  
 
   @include breakpoint-down(sm) {
     grid-template-columns: 1fr;
@@ -48,8 +44,7 @@
   }
     text-wrap: wrap;
     overflow: hidden;
-    padding: 3rem;
-
+    padding: 1rem;
   }
   
   

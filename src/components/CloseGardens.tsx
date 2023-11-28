@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, {  useState } from 'react';
 
-import { calculateDistance } from '../../utils/DistanceCalculator';
+import { calculateDistance } from '../utils/DistanceCalculator';
 
 const CloseGardens = ({showClosest, setShowClosest } : any) => {
 

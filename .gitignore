@@ -64,3 +64,4 @@ package-lock.json
 package.json
 src/app/components/MapGoogle.tsx
 src/pages/index.tsx
+.env

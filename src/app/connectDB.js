@@ -13,9 +13,7 @@ const createConnectionToDB = async () => {
     database,
     user,
     password,
-    ssl: {
-      ca: fs.readFileSync(sslCert)
-  }
+   
   });
   return connectToDB;
 };

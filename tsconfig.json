@@ -50,7 +50,7 @@
     ".storybook/*.ts",
     ".next/types/**/*.ts",
     "src/app/libs/Env.mjs",
-    "src/pages/api/getdata.js",
+    "src/pages/api/comments/getdata.js",
     "src/utils/connectDB.js",
     "src/styles/js/mapStyles.ts"
   ]

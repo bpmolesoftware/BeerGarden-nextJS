@@ -1,4 +1,4 @@
-import { createConnectionToDB } from '../connectDB';
+import { createConnectionToDB } from '../../pages/api/connectDB';
 
 export default async function handler(req, res) {
   const { id } = req.query;

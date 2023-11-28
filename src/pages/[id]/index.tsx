@@ -3,15 +3,15 @@ import '@/styles/global.scss';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import Address from '@/app/components/Address';
-import CommentForm from '@/app/components/CommentForm';
-import Footer from '@/app/components/Footer';
-import GardenDetails from '@/app/components/GardenDetails';
-import Header from '@/app/components/Header';
-import MapGarden from '@/app/components/MapGarden';
-import OpenTimes from '@/app/components/OpenTimes';
-import ShowComments from '@/app/components/ShowComments';
-import Weather from '@/app/components/Weather';
+import Address from '@/components/Address';
+import CommentForm from '@/components/CommentForm';
+import Footer from '@/components/Footer';
+import GardenDetails from '@/components/GardenDetails';
+import Header from '@/components/Header';
+import MapGarden from '@/components/MapGarden';
+import OpenTimes from '@/components/OpenTimes';
+import ShowComments from '@/components/ShowComments';
+import Weather from '@/components/Weather';
 
 let host: any;
 if (typeof window !== 'undefined') {

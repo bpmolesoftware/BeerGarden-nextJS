@@ -2,10 +2,10 @@ import '@/styles/global.scss';
 
 import React, { useEffect, useState } from 'react';
 
-import Favourite from '@/app/components/Favourite';
-import Header from '@/app/components/Header';
+import Favourite from '@/components/Favourite';
+import Header from '@/components/Header';
 import { getFavourites } from '@/utils/apiDataUtil';
-import Footer from '@/app/components/Footer';
+import Footer from '@/components/Footer';
 
 const index = () => {
 
