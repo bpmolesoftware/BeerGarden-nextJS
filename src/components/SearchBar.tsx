@@ -55,11 +55,11 @@ const SearchBar = () => {
             className="search-button"
             onClick={(e) => handleSearch(e)}
           >
-            <img src="img/search.svg" className="search__icon" alt="" />
+            <img src="/img/search.svg" className="search__icon" alt="" />
           </button>
           <button className="clear-button" onClick={(e) => handleClear(e)}>
             <div>
-              <img src="img/x.svg" alt="" />
+              <img src="/img/x.svg" alt="" />
             </div>
           </button>
         </div>

@@ -9,7 +9,7 @@ const containerStyles = {
   height: '40%',
 };
 const MapGarden = ({ coords }: any) => {
-  const icon = 'img/beer-marker.svg';
+  const icon = '/img/beer-marker.svg';
 
   const latLng = coords.split(',');
 
